@@ -23,42 +23,29 @@ public class MotorTests extends LinearOpMode {
             return;
         while (opModeIsActive()) {
             if (gamepad1.b) {
-                if (gamepad1.right_trigger>0) {
-                    frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                    frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                    backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                    backRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                    frontLeft.setPower(gamepad1.left_stick_x);
-                    frontRight.setPower(gamepad1.left_stick_x);
-                    backLeft.setPower(gamepad1.left_stick_x);
-                    backRight.setPower(gamepad1.left_stick_x);
+                frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                backRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                frontLeft.setPower(gamepad1.left_stick_y);
+                frontRight.setPower(gamepad1.left_stick_y);
+                backLeft.setPower(gamepad1.left_stick_y);
+                backRight.setPower(gamepad1.left_stick_y);
                 }
-                else {
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    backLeft.setPower(0);
-                    backRight.setPower(0);
-                }
-                if (gamepad1.left_trigger>0) {
-                    frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                    frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                    backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                    backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                    frontLeft.setPower(gamepad1.right_stick_x);
-                    frontRight.setPower(gamepad1.right_stick_x);
-                    backLeft.setPower(gamepad1.right_stick_x);
-                    backRight.setPower(gamepad1.right_stick_x);
-                }
-                else {
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    backLeft.setPower(0);
-                    backRight.setPower(0);
+            /*if (gamepad1.a) {
+                frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                frontLeft.setPower(gamepad1.right_stick_x);
+                frontRight.setPower(gamepad1.right_stick_x);
+                backLeft.setPower(gamepad1.right_stick_x);
+                backRight.setPower(gamepad1.right_stick_x);
 
-                }
+                }*/
             }
 
 
-            }
+
         }
     }
