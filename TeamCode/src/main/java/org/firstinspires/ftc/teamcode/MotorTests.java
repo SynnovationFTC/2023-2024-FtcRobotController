@@ -23,10 +23,10 @@ public class MotorTests extends LinearOpMode {
             return;
         while (opModeIsActive()) {
             if (gamepad1.b) {
-                frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                backRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                backRight.setDirection(DcMotorSimple.Direction.REVERSE);
                 frontLeft.setPower(gamepad1.left_stick_y);
                 frontRight.setPower(gamepad1.left_stick_y);
                 backLeft.setPower(gamepad1.left_stick_y);
