@@ -21,19 +21,8 @@ public class MotorTests extends LinearOpMode {
                 testmotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
                 testmotor.setPower(gamepad1.left_stick_y);
-                }
-            /*if (gamepad1.a) {
-                frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                frontLeft.setPower(gamepad1.right_stick_x);
-                frontRight.setPower(gamepad1.right_stick_x);
-                backLeft.setPower(gamepad1.right_stick_x);
-                backRight.setPower(gamepad1.right_stick_x);
-
-                }*/
             }
+        }
 
 
 
