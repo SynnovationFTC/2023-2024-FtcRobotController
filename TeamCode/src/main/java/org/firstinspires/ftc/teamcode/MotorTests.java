@@ -7,30 +7,20 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp
 public class MotorTests extends LinearOpMode {
-    private DcMotor frontLeft = null;
-    private DcMotor frontRight = null;
-    private DcMotor backLeft = null;
-    private DcMotor backRight = null;
-    @Override
+    private DcMotor testmotor = null;
+
 
     public void runOpMode() throws InterruptedException{
-        frontLeft = hardwareMap.get(DcMotor.class, "frontleft");
-        frontRight = hardwareMap.get(DcMotor.class, "frontright");
-        backLeft = hardwareMap.get(DcMotor.class, "backleft");
-        backRight = hardwareMap.get(DcMotor.class, "backright");
+        testmotor = hardwareMap.get(DcMotor.class, "testmotor");
+
         waitForStart();
         if (isStopRequested())
             return;
         while (opModeIsActive()) {
             if (gamepad1.b) {
-                frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                frontLeft.setPower(gamepad1.left_stick_y);
-                frontRight.setPower(gamepad1.left_stick_y);
-                backLeft.setPower(gamepad1.left_stick_y);
-                backRight.setPower(gamepad1.left_stick_y);
+                testmotor.setDirection(DcMotorSimple.Direction.FORWARD);
+
+                testmotor.setPower(gamepad1.left_stick_y);
                 }
             /*if (gamepad1.a) {
                 frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
