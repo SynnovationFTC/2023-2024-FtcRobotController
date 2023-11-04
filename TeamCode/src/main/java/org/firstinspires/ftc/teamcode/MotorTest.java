@@ -59,6 +59,6 @@ public class MotorTest extends LinearOpMode {
             }
 
 
-            }
         }
+    }
     }
