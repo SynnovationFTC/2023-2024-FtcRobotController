@@ -8,24 +8,31 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @TeleOp
 public class ViperSlideTest extends LinearOpMode {
     @Override
-    public void runOpMode() throws InterruptedException{
-        DcMotor viperSlide = hardwareMap.get(DcMotor.class, "viperslide");
+    public void runOpMode() throws InterruptedException {
+        DcMotor leftviperslide = hardwareMap.get(DcMotor.class, "leftviperslide");
+        DcMotor rightviperslide = hardwareMap.get(DcMotor.class, "rightviperslide");
         waitForStart();
-        if (isStopRequested())
-            return;
+        if (isStopRequested()) return;
         while (opModeIsActive()) {
             if (gamepad1.b) {
-                if (gamepad1.right_trigger>0) {
-                    viperSlide.setDirection(DcMotorSimple.Direction.REVERSE);
-                    viperSlide.setPower(gamepad1.right_trigger);
-                }
-                else if (gamepad1.left_trigger>0) {
-                    viperSlide.setDirection(DcMotorSimple.Direction.FORWARD);
-                    viperSlide.setPower(gamepad1.left_trigger);
-                }
+                if (gamepad1.right_trigger > 0) {
+                    leftviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
+                    rightviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
+                    leftviperslide.setPower(gamepad1.right_trigger);
+                    rightviperslide.setPower(gamepad1.right_trigger);
+                } else if (gamepad1.left_trigger > 0) {
+                    leftviperslide.setDirection(DcMotorSimple.Direction.FORWARD);
+                    rightviperslide.setDirection(DcMotorSimple.Direction.FORWARD);
+                    leftviperslide.setPower(gamepad1.left_trigger);
+                    rightviperslide.setPower(gamepad1.left_trigger);
+                } else {
+                    leftviperslide.setPower(0);
+                    rightviperslide.setPower(0);
                 }
             }
         }
     }
+}
+
 
 
