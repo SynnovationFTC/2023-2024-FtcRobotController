@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /*
  * This OpMode illustrates using a camera to locate and drive towards a specific AprilTag.
@@ -180,6 +181,7 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor leftviperslide = hardwareMap.get(DcMotor.class, "leftviperslide");
         //DcMotor rightviperslide = hardwareMap.get(DcMotor.class, "rightviperslide");
         DcMotor winchmotor = hardwareMap.get(DcMotor.class, "winch");
+        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         if (gamepad1.b) {
             if (gamepad1.right_trigger > 0) {
                 leftviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -206,6 +208,12 @@ public class RobotFullDrive extends LinearOpMode {
             } else {
                 winchmotor.setPower(0);
             }
+        }
+        if (gamepad1.dpad_up) {
+            dronelauncher.setPosition(0.5);
+        }
+        if (gamepad1.dpad_down) {
+            dronelauncher.setPosition(1);
         }
     }
 }
