@@ -16,20 +16,18 @@ public class FlightServoMotor extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        Servo Flight = hardwareMap.get(Servo.class, "FlightServo");
+        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         telemetry.addData("Status", "Initialized");
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.x) {
-                Flight.setPosition(0.4);
+            if (gamepad1.dpad_up){
+                dronelauncher.setPosition(0.5);
             }
-            if (gamepad1.y) {
-                Flight.setPosition(0);
+            if (gamepad1.dpad_down){
+                dronelauncher.setPosition(1);
             }
-            telemetry.addData("Status", "Running");
-            telemetry.update();
         }
     }
 }
