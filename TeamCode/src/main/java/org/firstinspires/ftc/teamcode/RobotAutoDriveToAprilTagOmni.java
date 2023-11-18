@@ -248,6 +248,7 @@ public class RobotAutoDriveToAprilTagOmni extends LinearOpMode {
         rightBackDrive.setPower(rightBackPower);
         DcMotor leftviperslide = hardwareMap.get(DcMotor.class, "leftviperslide");
         DcMotor rightviperslide = hardwareMap.get(DcMotor.class, "rightviperslide");
+        DcMotor winchmotor = hardwareMap.get(DcMotor.class, "winch");
         if (gamepad1.b) {
             if (gamepad1.right_trigger > 0) {
                 leftviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -263,17 +264,16 @@ public class RobotAutoDriveToAprilTagOmni extends LinearOpMode {
                 leftviperslide.setPower(0);
                 rightviperslide.setPower(0);
             }
-            DcMotor winch = hardwareMap.get(DcMotor.class, "winch");
-            if (gamepad1.a) {
-                if (gamepad1.right_trigger > 0) {
-                    winch.setDirection(DcMotorSimple.Direction.REVERSE);
-                    winch.setPower(gamepad1.right_trigger);
-                } else if (gamepad1.left_trigger > 0) {
-                    winch.setDirection(DcMotorSimple.Direction.FORWARD);
-                    winch.setPower(gamepad1.left_trigger);
-                } else {
-                    winch.setPower(0);
-                }
+        }
+        if (gamepad1.a) {
+            if (gamepad1.right_trigger > 0) {
+                winchmotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                winchmotor.setPower(gamepad1.right_trigger);
+            } else if (gamepad1.left_trigger > 0) {
+                winchmotor.setDirection(DcMotorSimple.Direction.FORWARD);
+                winchmotor.setPower(gamepad1.left_trigger);
+            } else {
+                winchmotor.setPower(0);
             }
         }
     }
