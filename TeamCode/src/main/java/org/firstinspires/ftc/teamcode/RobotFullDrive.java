@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /*
@@ -87,10 +88,6 @@ public class RobotFullDrive extends LinearOpMode {
     final double STRAFE_GAIN = 0.015;   //  Strafe Speed Control "Gain".  eg: Ramp up to 25% power at a 25 degree Yaw error.   (0.25 / 25.0)
     final double TURN_GAIN = 0.01;   //  Turn Control "Gain".  eg: Ramp up to 25% power at a 25 degree error. (0.25 / 25.0)
 
-    final double MAX_AUTO_SPEED = 0.5;   //  Clip the approach speed to this max value (adjust for your robot)
-    final double MAX_AUTO_STRAFE = 0.5;   //  Clip the approach speed to this max value (adjust for your robot)
-    final double MAX_AUTO_TURN = 0.3;   //  Clip the turn speed to this max value (adjust for your robot)
-
     private DcMotor leftFrontDrive = null;  //  Used to control the left front drive wheel
     private DcMotor rightFrontDrive = null;  //  Used to control the right front drive wheel
     private DcMotor leftBackDrive = null;  //  Used to control the left back drive wheel
@@ -110,6 +107,10 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive = hardwareMap.get(DcMotor.class, "frontright");
         leftBackDrive = hardwareMap.get(DcMotor.class, "backleft");
         rightBackDrive = hardwareMap.get(DcMotor.class, "backright");
+        DigitalChannel color = hardwareMap.get(DigitalChannel.class, "color");
+        DigitalChannel boardside = hardwareMap.get(DigitalChannel.class, "boardside");
+        color.setMode(DigitalChannel.Mode.INPUT);
+        boardside.setMode(DigitalChannel.Mode.INPUT);
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
@@ -123,6 +124,8 @@ public class RobotFullDrive extends LinearOpMode {
         // Wait for driver to press start
         telemetry.addData(">", "Touch Play to start OpMode");
         telemetry.update();
+        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
+        dronelauncher.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
@@ -131,6 +134,26 @@ public class RobotFullDrive extends LinearOpMode {
 
             // Tell the driver what we see, and what to do.
             telemetry.addData("\n>", "Drive using joysticks\n");
+            // Give switch input data
+            if (color.getState()) {
+                telemetry.addData("Color", "Red");
+                String colorvalue = "red";
+            }
+            if (!color.getState()) {
+                telemetry.addData("Color", "Blue");
+                String colorvalue = "blue";
+            }
+            if (boardside.getState()) {
+                telemetry.addData("Side", "Board");
+                String side = "board";
+
+            }
+            if (!boardside.getState()) {
+                telemetry.addData("Side", "Audience");
+                String side = "audience";
+            }
+            telemetry.update();
+
             // drive using manual POV Joystick mode.  Slow things down to make the robot more controlable.
             drive = -gamepad1.left_stick_y / 2.0;  // Reduce drive rate to 50%.
             strafe = -gamepad1.left_stick_x / 2.0;  // Reduce strafe rate to 50%.
@@ -154,6 +177,7 @@ public class RobotFullDrive extends LinearOpMode {
      * Positive Yaw is counter-clockwise
      */
     public void moveRobot(double x, double y, double yaw) {
+        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         // Calculate wheel powers.
         double leftFrontPower = -x - y - yaw;
         double rightFrontPower = -x + y + yaw;
@@ -181,7 +205,6 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor leftviperslide = hardwareMap.get(DcMotor.class, "leftviperslide");
         //DcMotor rightviperslide = hardwareMap.get(DcMotor.class, "rightviperslide");
         DcMotor winchmotor = hardwareMap.get(DcMotor.class, "winch");
-        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         if (gamepad1.b) {
             if (gamepad1.right_trigger > 0) {
                 leftviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
