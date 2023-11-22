@@ -152,7 +152,6 @@ public class RobotFullDrive extends LinearOpMode {
                 telemetry.addData("Side", "Audience");
                 String side = "audience";
             }
-            telemetry.update();
 
             // drive using manual POV Joystick mode.  Slow things down to make the robot more controlable.
             drive = -gamepad1.left_stick_y / 2.0;  // Reduce drive rate to 50%.
@@ -201,37 +200,6 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        // Disabled right viper slide
-        DcMotor leftviperslide = hardwareMap.get(DcMotor.class, "leftviperslide");
-        //DcMotor rightviperslide = hardwareMap.get(DcMotor.class, "rightviperslide");
-        DcMotor winchmotor = hardwareMap.get(DcMotor.class, "winch");
-        if (gamepad1.b) {
-            if (gamepad1.right_trigger > 0) {
-                leftviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
-                //rightviperslide.setDirection(DcMotorSimple.Direction.REVERSE);
-                leftviperslide.setPower(gamepad1.right_trigger);
-                //rightviperslide.setPower(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0) {
-                leftviperslide.setDirection(DcMotorSimple.Direction.FORWARD);
-                //rightviperslide.setDirection(DcMotorSimple.Direction.FORWARD);
-                leftviperslide.setPower(gamepad1.left_trigger);
-                //rightviperslide.setPower(gamepad1.left_trigger);
-            } else {
-                leftviperslide.setPower(0);
-                //rightviperslide.setPower(0);
-            }
-        }
-        if (gamepad1.a) {
-            if (gamepad1.right_trigger > 0) {
-                winchmotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                winchmotor.setPower(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0) {
-                winchmotor.setDirection(DcMotorSimple.Direction.FORWARD);
-                winchmotor.setPower(gamepad1.left_trigger);
-            } else {
-                winchmotor.setPower(0);
-            }
-        }
         if (gamepad1.dpad_up) {
             dronelauncher.setPosition(0.5);
         }
