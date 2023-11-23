@@ -78,8 +78,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp()
 public class RobotFullDrive extends LinearOpMode {
-    // Adjust these numbers to suit your robot.
-    final double DESIRED_DISTANCE = 12.0; //  this is how close the camera should get to the target (inches)
 
     //  Set the GAIN constants to control the relationship between the measured position error, and how much power is
     //  applied to the drive motors to correct the error.
@@ -153,13 +151,14 @@ public class RobotFullDrive extends LinearOpMode {
                 String side = "audience";
             }
 
-            // drive using manual POV Joystick mode.  Slow things down to make the robot more controlable.
+            // drive using manual POV Joystick mode.  Slow things down to make the robot more controllable.
             drive = -gamepad1.left_stick_y / 2.0;  // Reduce drive rate to 50%.
             strafe = -gamepad1.left_stick_x / 2.0;  // Reduce strafe rate to 50%.
             turn = -gamepad1.right_stick_x / 3.0;  // Reduce turn rate to 33%.
             telemetry.addData("Details", "Drive %5.2f, Strafe %5.2f, Turn %5.2f ", drive, strafe, turn);
-            telemetry.update();
 
+            // Update Telemetry (keep it at the end of the loop so there are no glitches)
+            telemetry.update();
             // Apply desired axes motions to the drivetrain.
             moveRobot(drive, turn, strafe);
             sleep(10);
