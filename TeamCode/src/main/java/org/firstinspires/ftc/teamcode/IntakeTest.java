@@ -7,11 +7,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp
 public class IntakeTest extends LinearOpMode {
-    private DcMotor intake = null;
-
+    private DcMotor geckomotor = null;
+    private DcMotor bootmotor = null;
     @Override
     public void runOpMode() throws InterruptedException {
-        intake = hardwareMap.get(DcMotor.class, "intake");
+        geckomotor = hardwareMap.get(DcMotor.class, "geckomotor");
+        bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
         waitForStart();
         if (isStopRequested()) {
             return;
@@ -19,19 +20,25 @@ public class IntakeTest extends LinearOpMode {
         while (opModeIsActive()) {
             if (gamepad1.b) {
                 if (gamepad1.right_trigger > 0) {
-                    intake.setDirection(DcMotorSimple.Direction.FORWARD);
-                    intake.setPower(gamepad1.right_trigger);
+                    geckomotor.setDirection(DcMotorSimple.Direction.FORWARD);
+                    geckomotor.setPower(gamepad1.right_trigger);
+                    bootmotor.setDirection(DcMotorSimple.Direction.FORWARD);
+                    bootmotor.setPower(gamepad1.right_trigger);
                     telemetry.addData("Power", gamepad1.right_trigger);
                 } else {
-                    intake.setPower(0);
+                    geckomotor.setPower(0);
+                    bootmotor.setPower(0);
                 }
                 if (gamepad1.left_trigger > 0) {
-                    intake.setDirection(DcMotorSimple.Direction.REVERSE);
-                    intake.setPower(gamepad1.left_trigger);
+                    geckomotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    geckomotor.setPower(gamepad1.left_trigger);
+                    bootmotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    bootmotor.setPower(gamepad1.left_trigger);
                     telemetry.addData("Power", gamepad1.left_trigger);
 
                 } else {
-                    intake.setPower(0);
+                    geckomotor.setPower(0);
+                    bootmotor.setPower(0);
                 }
             }
             telemetry.update();
