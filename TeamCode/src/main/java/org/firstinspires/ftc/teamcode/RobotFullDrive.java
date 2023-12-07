@@ -103,6 +103,7 @@ public class RobotFullDrive extends LinearOpMode {
         rightBackDrive = hardwareMap.get(DcMotor.class, "backright");
         DigitalChannel color = hardwareMap.get(DigitalChannel.class, "color");
         DigitalChannel boardside = hardwareMap.get(DigitalChannel.class, "boardside");
+
         color.setMode(DigitalChannel.Mode.INPUT);
         boardside.setMode(DigitalChannel.Mode.INPUT);
 
@@ -150,13 +151,15 @@ public class RobotFullDrive extends LinearOpMode {
             // drive using manual POV Joystick mode.  Slow things down to make the robot more controllable.
             drive = -gamepad1.left_stick_y / 2.0;  // Reduce drive rate to 50%.
             strafe = -gamepad1.left_stick_x / 2.0;  // Reduce strafe rate to 50%.
-            turn = -gamepad1.right_stick_x / 3.0;  // Reduce turn rate to 33%.
+            //turn = -gamepad1.right_stick_x / 3.0
+            turn = gamepad1.right_stick_x / 3.0;  // Reduce turn rate to 33%.
             telemetry.addData("Details", "Drive %5.2f, Strafe %5.2f, Turn %5.2f ", drive, strafe, turn);
 
             // Update Telemetry (keep it at the end of the loop so there are no glitches)
             telemetry.update();
             // Apply desired axes motions to the drivetrain.
-            moveRobot(drive, turn, strafe);
+            //moveRobot(drive, turn, strafe);
+            moveRobot(-turn, drive, strafe);
             sleep(10);
         }
     }
@@ -171,12 +174,16 @@ public class RobotFullDrive extends LinearOpMode {
      * Positive Yaw is counter-clockwise
      */
     public void moveRobot(double x, double y, double yaw) {
+        DcMotor leftlinearactuator = hardwareMap.get(DcMotor.class, "leftlinearactuator");
+        DcMotor rightlinearactuator = hardwareMap.get(DcMotor.class, "rightlinearactuator");
+        DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
+        DcMotor geckowheel = hardwareMap.get(DcMotor.class, "geckomotor");
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         // Calculate wheel powers.
-        double leftFrontPower = -x - y - yaw;
-        double rightFrontPower = -x + y + yaw;
-        double leftBackPower = -x + y - yaw;
-        double rightBackPower = -x - y + yaw;
+        double leftFrontPower = x + y - yaw;
+        double rightFrontPower = x - y + yaw;
+        double leftBackPower = x - y - yaw;
+        double rightBackPower = x + y + yaw;
 
         // Normalize wheel powers to be less than 1.0
         double max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
@@ -200,6 +207,52 @@ public class RobotFullDrive extends LinearOpMode {
         }
         if (gamepad1.dpad_down) {
             dronelauncher.setPosition(1);
+        }
+        if (gamepad1.b){
+            if (gamepad1.right_trigger>0){
+                leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
+                rightlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
+                leftlinearactuator.setPower(gamepad1.right_trigger);
+                rightlinearactuator.setPower(gamepad1.right_trigger);
+            }
+            else {
+                leftlinearactuator.setPower(0);
+                rightlinearactuator.setPower(0);
+            }
+            if (gamepad1.left_trigger>0){
+                leftlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
+                rightlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
+                leftlinearactuator.setPower(gamepad1.left_trigger);
+                rightlinearactuator.setPower(gamepad1.left_trigger);
+
+            }
+            else {
+                leftlinearactuator.setPower(0);
+                rightlinearactuator.setPower(0);
+            }
+        }
+        if (gamepad1.a){
+            if (gamepad1.right_trigger>0){
+                geckowheel.setDirection(DcMotorSimple.Direction.FORWARD);
+                bootwheel.setDirection(DcMotorSimple.Direction.FORWARD);
+                geckowheel.setPower(gamepad1.right_trigger);
+                bootwheel.setPower(gamepad1.right_trigger);
+            }
+            else {
+                bootwheel.setPower(0);
+                geckowheel.setPower(0);
+            }
+            if (gamepad1.left_trigger>0){
+                geckowheel.setDirection(DcMotorSimple.Direction.REVERSE);
+                bootwheel.setDirection(DcMotorSimple.Direction.REVERSE);
+                geckowheel.setPower(gamepad1.left_trigger);
+                bootwheel.setPower(gamepad1.left_trigger);
+
+            }
+            else {
+                bootwheel.setPower(0);
+                geckowheel.setPower(0);
+            }
         }
     }
 }
