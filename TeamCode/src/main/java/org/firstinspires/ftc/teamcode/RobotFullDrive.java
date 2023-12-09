@@ -120,7 +120,7 @@ public class RobotFullDrive extends LinearOpMode {
         telemetry.addData(">", "Touch Play to start OpMode");
         telemetry.update();
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
-        dronelauncher.setPosition(1);
+        dronelauncher.setPosition(0.5);
         waitForStart();
 
         while (opModeIsActive()) {
@@ -179,6 +179,7 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
         DcMotor geckowheel = hardwareMap.get(DcMotor.class, "geckomotor");
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
+        Servo outtake = hardwareMap.get(Servo.class, "outtake");
         // Calculate wheel powers.
         double leftFrontPower = x + y - yaw;
         double rightFrontPower = x - y + yaw;
@@ -202,11 +203,26 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        if (gamepad1.dpad_up) {
-            dronelauncher.setPosition(0.5);
+        if (gamepad1.x) {
+
+            if (gamepad1.dpad_up) {
+                dronelauncher.setPosition(1);
+            }
+            if (gamepad1.dpad_down) {
+                dronelauncher.setPosition(0.5);
+            }
         }
-        if (gamepad1.dpad_down) {
-            dronelauncher.setPosition(1);
+        if (gamepad1.y){
+            if (gamepad1.dpad_up){
+                outtake.setPosition(1);
+                telemetry.addData("Servo Position: ", outtake.getPosition());
+            }
+            if (gamepad1.dpad_down){
+                outtake.setPosition(0.41);
+                //outtake.setPosition(gamepad1.right_trigger);
+                telemetry.addData("Servo Position: ", outtake.getPosition());
+
+            }
         }
         if (gamepad1.b){
             if (gamepad1.right_trigger>0){
