@@ -206,7 +206,7 @@ public class RobotFullDrive extends LinearOpMode {
         if (gamepad1.x) {
 
             if (gamepad1.dpad_up) {
-                dronelauncher.setPosition(1);
+                dronelauncher.setPosition(0.9);
             }
             if (gamepad1.dpad_down) {
                 dronelauncher.setPosition(0.5);
