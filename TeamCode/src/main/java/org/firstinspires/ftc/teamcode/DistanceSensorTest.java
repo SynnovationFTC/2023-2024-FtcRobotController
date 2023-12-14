@@ -17,35 +17,31 @@ public class DistanceSensorTest extends LinearOpMode{
         DistanceSensor sensorRange;
         sensorRange = hardwareMap.get(DistanceSensor.class, "range1");
         Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)sensorRange;
-        DcMotor leftDrive = hardwareMap.get(DcMotor.class, "leftmotor");
-        DcMotor rightDrive = hardwareMap.get(DcMotor.class, "rightmotor");
+        DcMotor right = hardwareMap.get(DcMotor.class, "right");
+        DcMotor left = hardwareMap.get(DcMotor.class, "left");
+        DcMotor up = hardwareMap.get(DcMotor.class, "up");
+        DcMotor down = hardwareMap.get(DcMotor.class, "down");
 
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        right.setDirection(DcMotor.Direction.REVERSE);
+        left.setDirection(DcMotor.Direction.FORWARD);
+        up.setDirection(DcMotor.Direction.REVERSE);
+        down.setDirection(DcMotor.Direction.FORWARD);
         waitForStart();
         while(opModeIsActive()){
             double distance = sensorRange.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName",sensorRange.getDeviceName() );
             telemetry.addData("range", String.format("%.01f cm", sensorRange.getDistance(DistanceUnit.CM)));
 
-            if( distance < 0){
+            if( distance > 31 && distance < 40 ){
 
-                leftDrive.setPower(0.3);
-                rightDrive.setPower(0.2);
+                boolean isteamprop = true;
+                System.out.println(isteamprop);
 
-            }else if(distance > 12){
+            }else if(distance > 40 && distance < 33){
+                boolean isteamprop = false;
+                System.out.println(isteamprop);
 
-                leftDrive.setPower(0.2);
-                rightDrive.setPower(0.3);
 
-
-            }
-            else{
-
-                leftDrive.setPower(0.3);
-                rightDrive.setPower(0.3);
             }
         }
 
