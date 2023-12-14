@@ -35,11 +35,11 @@ public class DistanceSensorTest extends LinearOpMode{
             if( distance > 31 && distance < 40 ){
 
                 boolean isteamprop = true;
-                System.out.println(isteamprop);
+                telemetry.addData("Is Team PROP in View:",isteamprop);
 
             }else if(distance > 40 && distance < 33){
                 boolean isteamprop = false;
-                System.out.println(isteamprop);
+                telemetry.addData("Is Team PROP in View:",isteamprop);
 
 
             }
