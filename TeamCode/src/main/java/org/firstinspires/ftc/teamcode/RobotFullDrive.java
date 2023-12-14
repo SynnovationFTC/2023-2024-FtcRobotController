@@ -152,7 +152,7 @@ public class RobotFullDrive extends LinearOpMode {
             drive = -gamepad1.left_stick_y * 0.75;  // Reduce drive rate to 75%.
             strafe = -gamepad1.left_stick_x * 0.75;  // Reduce strafe rate to 75%.
             //turn = -gamepad1.right_stick_x / 3.0
-            turn = gamepad1.right_stick_x / 3.0;  // Reduce turn rate to 33%.
+            turn = gamepad1.right_stick_x * ((double) 2/3);  // Reduce turn rate to 66%.
             telemetry.addData("Details", "Drive %5.2f, Strafe %5.2f, Turn %5.2f ", drive, strafe, turn);
 
             // Update Telemetry (keep it at the end of the loop so there are no glitches)
