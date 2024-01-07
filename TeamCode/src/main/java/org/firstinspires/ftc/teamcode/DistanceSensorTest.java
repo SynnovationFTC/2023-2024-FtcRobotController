@@ -29,11 +29,13 @@ public class DistanceSensorTest extends LinearOpMode{
         while(opModeIsActive()){
             telemetry.addData("Status", "Running");
         }
-
+        double leftdistance = left.getDistance(DistanceUnit.CM);
         telemetry.addData("deviceName",left.getDeviceName() );
         telemetry.addData("left", String.format("%.01f cm", left.getDistance(DistanceUnit.CM)));
+        double middledistance = middle.getDistance(DistanceUnit.CM);
         telemetry.addData("deviceName",middle.getDeviceName() );
         telemetry.addData("middle", String.format("%.01f cm", middle.getDistance(DistanceUnit.CM)));
+        double rightdistance = right.getDistance(DistanceUnit.CM);
         telemetry.addData("deviceName",right.getDeviceName() );
         telemetry.addData("right", String.format("%.01f cm", right.getDistance(DistanceUnit.CM)));
 
