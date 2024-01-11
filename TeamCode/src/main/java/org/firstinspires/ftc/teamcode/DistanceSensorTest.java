@@ -35,17 +35,17 @@ public class DistanceSensorTest extends LinearOpMode {
             double leftdistance = left.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", left.getDeviceName());
             telemetry.addData("left", String.format("%.01f cm", leftdistance));
-            isLeftObjectDetected = (leftdistance >= 30 && leftdistance <= 100);
+            isLeftObjectDetected = (leftdistance >= 36 && leftdistance <= 64);
 
             double middledistance = middle.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", middle.getDeviceName());
             telemetry.addData("middle", String.format("%.01f cm", middledistance));
-            isMiddleObjectDetected = (middledistance >= 30 && middledistance <= 100);
+            isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 100);
 
             double rightdistance = right.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", right.getDeviceName());
             telemetry.addData("right", String.format("%.01f cm", rightdistance));
-            isRightObjectDetected = (rightdistance >= 30 && rightdistance <= 100);
+            isRightObjectDetected = (rightdistance >= 36 && rightdistance <= 64);
 
             telemetry.addData("Object Detected (Left)", isLeftObjectDetected);
             telemetry.addData("Object Detected (Middle)", isMiddleObjectDetected);
