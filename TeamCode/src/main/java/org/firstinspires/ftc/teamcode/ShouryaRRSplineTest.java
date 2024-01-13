@@ -17,15 +17,19 @@ public class ShouryaRRSplineTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         Pose2d startPose = new Pose2d(11.08, -61.62, Math.toRadians(90.00));
-        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(-36.00, -65.77, Math.toRadians(90.00)))
-                .splineTo(new Vector2d(-36.69, -36.92), Math.toRadians(87.75))
-                .lineTo(new Vector2d(-36.23, -63.92))
-                .splineTo(new Vector2d(-20.31, -59.77), Math.toRadians(-12.14))
-                .splineTo(new Vector2d(0.92, -59.54), Math.toRadians(-10.68))
+        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(-36.23, -61.85, Math.toRadians(90.00)))
+                .splineTo(new Vector2d(-36.00, -35.31), Math.toRadians(90.00))
+                .lineTo(new Vector2d(-35.77, -59.54))
+                .splineTo(new Vector2d(-25.15, -59.31), Math.toRadians(-12.14))
+                .splineTo(new Vector2d(-12.23, -59.54), Math.toRadians(0.99))
+                .splineTo(new Vector2d(-4.38, -59.77), Math.toRadians(-8.13))
+                .splineTo(new Vector2d(7.15, -59.77), Math.toRadians(-10.68))
+                .splineTo(new Vector2d(19.15, -59.77), Math.toRadians(5.04))
                 .splineTo(new Vector2d(34.15, -59.08), Math.toRadians(3.27))
+                .splineTo(new Vector2d(36.69, -43.15), Math.toRadians(56.82))
+                .splineTo(new Vector2d(49.38, -36.69), Math.toRadians(0.00))
                 .build();
-        drive.setPoseEstimate(traj.start());
-        /*
+        drive.setPoseEstimate(traj.start());        /*
         TrajectorySequence traj = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(11.08, -33.92), Math.toRadians(90.00))
                 .splineTo(new Vector2d(10.85, -53.77), Math.toRadians(269.33))
