@@ -59,20 +59,7 @@ public class ShouryaRRSplineTest extends LinearOpMode {
                 drive.setPoseEstimate(trajleft.start());
                 drive.followTrajectorySequence(trajleft);
             }
-            double middledistance = middle.getDistance(DistanceUnit.CM);
-            telemetry.addData("deviceName", middle.getDeviceName());
-            telemetry.addData("middle", String.format("%.01f cm", middledistance));
-            isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 7000);
-            if (isMiddleObjectDetected){
-                TrajectorySequence trajmiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.57, -60.34, Math.toRadians(90.00)))
-                        .splineTo(new Vector2d(-36.34, -32.91), Math.toRadians(90.40))
-                        .lineTo(new Vector2d(-48.91, -48.46))
-                        .lineTo(new Vector2d(-56.00, -24.46))
-                        .splineTo(new Vector2d(22.17, -5.94), Math.toRadians(6.18))
-                        .splineTo(new Vector2d(48.46, -36.34), Math.toRadians(2.54))
-                        .build();
-                drive.setPoseEstimate(trajmiddle.start());
-            drive.followTrajectorySequence(trajmiddle);}
+
 
 
             double rightdistance = right.getDistance(DistanceUnit.CM);
@@ -92,6 +79,20 @@ public class ShouryaRRSplineTest extends LinearOpMode {
                         .build();
                 drive.setPoseEstimate(trajright.start());
                 drive.followTrajectorySequence(trajright);
+            double middledistance = middle.getDistance(DistanceUnit.CM);
+            telemetry.addData("deviceName", middle.getDeviceName());
+            telemetry.addData("middle", String.format("%.01f cm", middledistance));
+            isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 7000);
+            if (isMiddleObjectDetected){
+                TrajectorySequence trajmiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.57, -60.34, Math.toRadians(90.00)))
+                        .splineTo(new Vector2d(-36.34, -32.91), Math.toRadians(90.40))
+                        .lineTo(new Vector2d(-48.91, -48.46))
+                        .lineTo(new Vector2d(-56.00, -24.46))
+                        .splineTo(new Vector2d(22.17, -5.94), Math.toRadians(6.18))
+                        .splineTo(new Vector2d(48.46, -36.34), Math.toRadians(2.54))
+                        .build();
+                drive.setPoseEstimate(trajmiddle.start());
+                drive.followTrajectorySequence(trajmiddle);}
                 break;
             }
             telemetry.addData("Object Detected (Left)", isLeftObjectDetected);
