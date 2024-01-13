@@ -65,12 +65,12 @@ public class ShouryaRRSplineTest extends LinearOpMode {
             isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 7000);
             if (isMiddleObjectDetected){
                 TrajectorySequence trajmiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.57, -60.34, Math.toRadians(90.00)))
-                        .splineTo(new Vector2d(-35.89, -24.46), Math.toRadians(90.40))
+                        .splineTo(new Vector2d(-36.34, -29.71), Math.toRadians(90.40))
                         .lineTo(new Vector2d(-57.37, -54.40))
                         .splineTo(new Vector2d(-57.83, -7.54), Math.toRadians(91.52))
                         .splineTo(new Vector2d(22.17, -5.94), Math.toRadians(6.18))
                         .splineTo(new Vector2d(23.09, -37.03), Math.toRadians(-87.92))
-                        .splineTo(new Vector2d(50.97, -37.03), Math.toRadians(7.03))
+                        .splineTo(new Vector2d(46.17, -37.71), Math.toRadians(7.03))
                         .build();
                 drive.setPoseEstimate(trajmiddle.start());
             drive.followTrajectorySequence(trajmiddle);}
