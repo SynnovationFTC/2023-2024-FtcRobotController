@@ -17,13 +17,12 @@ public class ShouryaRRSplineTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         Pose2d startPose = new Pose2d(11.08, -61.62, Math.toRadians(90.00));
-        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(-36.38, -62.34, Math.toRadians(90.00)))
-                .splineTo(new Vector2d(-35.92, -33.51), Math.toRadians(90.31))
-                .lineToConstantHeading(new Vector2d(-35.92, -58.11))
-                .splineTo(new Vector2d(-24.75, -36.68), Math.toRadians(8.18))
-                .splineTo(new Vector2d(3.77, -35.32), Math.toRadians(0.31))
-                .splineTo(new Vector2d(31.25, -35.32), Math.toRadians(2.71))
-                .splineTo(new Vector2d(49.81, -36.23), Math.toRadians(-1.00))
+        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(-36.00, -65.77, Math.toRadians(90.00)))
+                .splineTo(new Vector2d(-36.69, -36.92), Math.toRadians(87.75))
+                .lineTo(new Vector2d(-36.23, -63.92))
+                .splineTo(new Vector2d(-20.31, -59.77), Math.toRadians(-12.14))
+                .splineTo(new Vector2d(0.92, -59.54), Math.toRadians(-10.68))
+                .splineTo(new Vector2d(34.15, -59.08), Math.toRadians(3.27))
                 .build();
         drive.setPoseEstimate(traj.start());
         /*
