@@ -26,10 +26,9 @@ public class ShouryaRRSplineTest extends LinearOpMode {
                 .splineTo(new Vector2d(10.85, -60.00), Math.toRadians(-10.68))
                 .splineTo(new Vector2d(19.15, -59.77), Math.toRadians(5.04))
                 .splineTo(new Vector2d(34.15, -59.08), Math.toRadians(3.27))
-                .splineTo(new Vector2d(36.69, -43.15), Math.toRadians(56.82))
                 .splineTo(new Vector2d(49.38, -36.69), Math.toRadians(0.00))
                 .build();
-        drive.setPoseEstimate(traj.start());        /*
+        drive.setPoseEstimate(traj.start());       /*
         TrajectorySequence traj = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(11.08, -33.92), Math.toRadians(90.00))
                 .splineTo(new Vector2d(10.85, -53.77), Math.toRadians(269.33))
