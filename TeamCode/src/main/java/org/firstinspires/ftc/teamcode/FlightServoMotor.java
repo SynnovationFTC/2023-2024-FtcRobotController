@@ -18,22 +18,22 @@ public class FlightServoMotor extends LinearOpMode {
         top.setPosition(topservoposition);
         down.setPosition(bottomservoposition);
 
-        double topservoincrement = 0.1;  // Adjust this increment based on your servo specs
-        double bottomservoincrement = 0.1;
+        //double topservoincrement = 0.1;  // Adjust this increment based on your servo specs
+        //double bottomservoincrement = 0.1;
 
         waitForStart();
 
         while (opModeIsActive()) {
             if (gamepad1.dpad_up) {
-                bottomservoposition -= 0.2;  // Decrease by 20 degrees
-                down.setPosition(bottomservoposition);
-                telemetry.addData("Dpad", "signal works up!" + bottomservoposition);
+                double lubottomservoposition = bottomservoposition -= 0.2;  // Decrease by 20 degrees
+                down.setPosition(lubottomservoposition);
+                telemetry.addData("Dpad", "signal works up!" + down.getPosition());
             }
 
             if (gamepad1.dpad_down) {
-                bottomservoposition += 0.2;  // Increase by 20 degrees
-                down.setPosition(bottomservoposition);
-                telemetry.addData("Dpad", "signal works down!" + bottomservoposition);
+                double ldbottomservoposition = bottomservoposition += 0.2;  // Increase by 20 degrees
+                down.setPosition(ldbottomservoposition);
+                telemetry.addData("Dpad", "signal works down!" + down.getPosition());
             }
 
             if (gamepad1.dpad_left) {
