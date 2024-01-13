@@ -66,8 +66,8 @@ public class ShouryaRRSplineTest extends LinearOpMode {
             if (isMiddleObjectDetected){
                 TrajectorySequence trajmiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.57, -60.34, Math.toRadians(90.00)))
                         .splineTo(new Vector2d(-36.34, -29.71), Math.toRadians(90.40))
-                        .lineTo(new Vector2d(-57.37, -54.40))
-                        .splineTo(new Vector2d(-57.83, -7.54), Math.toRadians(91.52))
+                        .lineTo(new Vector2d(-48.91, -48.46))
+                        .lineTo(new Vector2d(-55.09, -5.94))
                         .splineTo(new Vector2d(22.17, -5.94), Math.toRadians(6.18))
                         .splineTo(new Vector2d(23.09, -37.03), Math.toRadians(-87.92))
                         .splineTo(new Vector2d(46.17, -37.71), Math.toRadians(7.03))
