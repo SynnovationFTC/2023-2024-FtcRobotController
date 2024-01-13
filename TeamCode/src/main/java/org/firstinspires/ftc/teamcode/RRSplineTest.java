@@ -18,11 +18,11 @@ public class RRSplineTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         Pose2d startPose = new Pose2d(11.08, -61.62, Math.toRadians(90.00));
-        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(11.54, -62.54, Math.toRadians(90.00)))
+        TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(11.08, -62.08, Math.toRadians(90.00)))
                 .splineTo(new Vector2d(11.54, -36.46), Math.toRadians(91.82))
-                .splineTo(new Vector2d(11.54, -56.54), Math.toRadians(270.00))
+                .splineTo(new Vector2d(11.08, -53.77), Math.toRadians(270.00))
                 .splineTo(new Vector2d(34.85, -51.23), Math.toRadians(25.84))
-                .splineTo(new Vector2d(50.77, -36.23), Math.toRadians(0.00))
+                .splineTo(new Vector2d(48.92, -36.00), Math.toRadians(0.00))
                 .build();
         drive.setPoseEstimate(traj.start());
         /*
