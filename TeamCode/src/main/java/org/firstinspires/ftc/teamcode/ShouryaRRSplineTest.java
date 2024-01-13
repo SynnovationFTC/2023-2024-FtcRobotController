@@ -65,15 +65,15 @@ public class ShouryaRRSplineTest extends LinearOpMode {
             isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 7000);
             if (isMiddleObjectDetected){
                 TrajectorySequence trajmiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.57, -60.34, Math.toRadians(90.00)))
-                        .splineTo(new Vector2d(-36.34, -29.71), Math.toRadians(90.40))
+                        .splineTo(new Vector2d(-36.34, -32.91), Math.toRadians(90.40))
                         .lineTo(new Vector2d(-48.91, -48.46))
-                        .lineTo(new Vector2d(-55.09, -5.94))
+                        .lineTo(new Vector2d(-56.00, -24.46))
                         .splineTo(new Vector2d(22.17, -5.94), Math.toRadians(6.18))
-                        .splineTo(new Vector2d(23.09, -37.03), Math.toRadians(-87.92))
-                        .splineTo(new Vector2d(46.17, -37.71), Math.toRadians(7.03))
+                        .splineTo(new Vector2d(48.46, -36.34), Math.toRadians(2.54))
                         .build();
                 drive.setPoseEstimate(trajmiddle.start());
             drive.followTrajectorySequence(trajmiddle);}
+
 
             double rightdistance = right.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", right.getDeviceName());
@@ -92,6 +92,7 @@ public class ShouryaRRSplineTest extends LinearOpMode {
                         .build();
                 drive.setPoseEstimate(trajright.start());
                 drive.followTrajectorySequence(trajright);
+                break;
             }
             telemetry.addData("Object Detected (Left)", isLeftObjectDetected);
             telemetry.addData("Object Detected (Middle)", isMiddleObjectDetected);
