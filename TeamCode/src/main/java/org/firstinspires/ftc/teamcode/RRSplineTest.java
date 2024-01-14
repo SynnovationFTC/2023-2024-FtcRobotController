@@ -21,7 +21,7 @@ public class RRSplineTest extends LinearOpMode {
         TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(11.66, -62.17, Math.toRadians(90.00)))
                 .splineTo(new Vector2d(11.66, -32.91), Math.toRadians(90.00))
                 .lineToLinearHeading(new Pose2d(30.40, -45.94, Math.toRadians(0.00)))
-                .splineTo(new Vector2d(50.29, -36.34), Math.toRadians(0.00))
+                .splineTo(new Vector2d(49.60, -29.94), Math.toRadians(0.00))
                 .build();
         drive.setPoseEstimate(traj.start());
         /*
