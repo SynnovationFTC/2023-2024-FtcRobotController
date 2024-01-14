@@ -101,6 +101,10 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive = hardwareMap.get(DcMotor.class, "frontright");
         leftBackDrive = hardwareMap.get(DcMotor.class, "backleft");
         rightBackDrive = hardwareMap.get(DcMotor.class, "backright");
+        leftFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DigitalChannel color = hardwareMap.get(DigitalChannel.class, "color");
         DigitalChannel boardside = hardwareMap.get(DigitalChannel.class, "boardside");
 
