@@ -153,10 +153,26 @@ public class RobotFullDrive extends LinearOpMode {
             }
 
             // drive using manual POV Joystick mode.  Slow things down to make the robot more controllable.
-            drive = -gamepad1.left_stick_y * 0.60;  // Reduce drive rate to 75%.
-            strafe = -gamepad1.left_stick_x * 0.60;  // Reduce strafe rate to 75%.
+            double o_drive_multiplier = 0.60;
+            double o_strafe_multiplier = 0.60;
+            double o_turn_multiplier = (double) 5 / 12;
+            double n_drive_multiplier = o_drive_multiplier;
+            double n_strafe_multiplier = o_strafe_multiplier;
+            double n_turn_multiplier = o_turn_multiplier;
+            if (gamepad1.right_bumper || gamepad1.left_bumper) {
+                n_drive_multiplier = 1;
+                n_strafe_multiplier = 1;
+                n_turn_multiplier = .89;
+            } else {
+                n_drive_multiplier = o_drive_multiplier;
+                n_strafe_multiplier = o_strafe_multiplier;
+                n_turn_multiplier = o_turn_multiplier;
+
+            }
+            drive = -gamepad1.left_stick_y * n_drive_multiplier;  // Reduce drive rate to 75%.
+            strafe = -gamepad1.left_stick_x * n_strafe_multiplier;  // Reduce strafe rate to 75%.
             //turn = -gamepad1.right_stick_x / 3.0
-            turn = gamepad1.right_stick_x * ((double) 5/12);  // Reduce turn rate to 66%.
+            turn = gamepad1.right_stick_x * n_turn_multiplier;  // Reduce turn rate to 66%.
             telemetry.addData("Details", "Drive %5.2f, Strafe %5.2f, Turn %5.2f ", drive, strafe, turn);
 
             // Update Telemetry (keep it at the end of the loop so there are no glitches)
@@ -167,6 +183,7 @@ public class RobotFullDrive extends LinearOpMode {
             sleep(10);
         }
     }
+
 
     /**
      * Move robot according to desired axes motions
@@ -206,6 +223,7 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
+
         if (gamepad1.x) {
 
             if (gamepad1.dpad_up) {
@@ -215,48 +233,44 @@ public class RobotFullDrive extends LinearOpMode {
                 dronelauncher.setPosition(0.5);
             }
         }
-        if (gamepad1.b){
-            if (gamepad1.right_trigger>0){
+        if (gamepad1.b) {
+            if (gamepad1.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
                 rightlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
                 leftlinearactuator.setPower(gamepad1.right_trigger);
                 rightlinearactuator.setPower(gamepad1.right_trigger);
-            }
-            else {
+            } else {
                 leftlinearactuator.setPower(0);
                 rightlinearactuator.setPower(0);
             }
-            if (gamepad1.left_trigger>0){
+            if (gamepad1.left_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
                 rightlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
                 leftlinearactuator.setPower(gamepad1.left_trigger);
                 rightlinearactuator.setPower(gamepad1.left_trigger);
 
-            }
-            else {
+            } else {
                 leftlinearactuator.setPower(0);
                 rightlinearactuator.setPower(0);
             }
         }
-        if (gamepad1.a){
-            if (gamepad1.right_trigger>0){
+        if (gamepad1.a) {
+            if (gamepad1.right_trigger > 0) {
                 geckowheel.setDirection(DcMotorSimple.Direction.FORWARD);
                 bootwheel.setDirection(DcMotorSimple.Direction.FORWARD);
                 geckowheel.setPower(gamepad1.right_trigger);
                 bootwheel.setPower(gamepad1.right_trigger);
-            }
-            else {
+            } else {
                 bootwheel.setPower(0);
                 geckowheel.setPower(0);
             }
-            if (gamepad1.left_trigger>0){
+            if (gamepad1.left_trigger > 0) {
                 geckowheel.setDirection(DcMotorSimple.Direction.REVERSE);
                 bootwheel.setDirection(DcMotorSimple.Direction.REVERSE);
                 geckowheel.setPower(gamepad1.left_trigger);
                 bootwheel.setPower(gamepad1.left_trigger);
 
-            }
-            else {
+            } else {
                 bootwheel.setPower(0);
                 geckowheel.setPower(0);
             }
