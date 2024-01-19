@@ -260,36 +260,13 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("door Position:", top.getPosition());
 
         }
-        if (gamepad2.a) {
+        if (gamepad2.dpad_left) {
             door.setPosition(0.27);
             telemetry.addData("door Position:", top.getPosition());
 
         }
         telemetry.update();
 
-        if (gamepad2.b) {
-            if (gamepad2.right_trigger > 0) {
-                geckomotor.setDirection(DcMotorSimple.Direction.FORWARD);
-                geckomotor.setPower(gamepad2.right_trigger);
-                bootmotor.setDirection(DcMotorSimple.Direction.FORWARD);
-                bootmotor.setPower(gamepad2.right_trigger);
-                telemetry.addData("Power", gamepad2.right_trigger);
-            } else {
-                geckomotor.setPower(0);
-                bootmotor.setPower(0);
-            }
-            if (gamepad2.left_trigger > 0) {
-                geckomotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                geckomotor.setPower(gamepad2.left_trigger);
-                bootmotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                bootmotor.setPower(gamepad2.left_trigger);
-                telemetry.addData("Power", gamepad2.left_trigger);
-
-            } else {
-                geckomotor.setPower(0);
-                bootmotor.setPower(0);
-            }
-        }
         if (gamepad1.x) {
 
             if (gamepad1.dpad_up) {
