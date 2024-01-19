@@ -224,11 +224,6 @@ public class RobotFullDrive extends LinearOpMode {
             leftBackPower /= max;
             rightBackPower /= max;
         }
-        double initialtopservoposition = 0;
-        double initialbottomservoposition = 0;
-        waitForStart();
-        top.setPosition(initialtopservoposition);
-        bottom.setPosition(initialbottomservoposition);
         // Send powers to the wheels.
         leftFrontDrive.setPower(leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
