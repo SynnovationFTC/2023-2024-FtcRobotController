@@ -1,21 +1,33 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
+
+import java.util.Objects;
 
 @Autonomous
 public class RobotFullAutonomous extends LinearOpMode {
+
+    static void pixelOnBoard() {
+        //make everything run at the same using multithreading
+        //outtake a pixel on the board
+    }
+
     @Override
-    public void runOpMode() throws InterruptedException{
+    public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         double runCount = 0;
-        boolean isLeftObjectDetected = false;
-        boolean isMiddleObjectDetected = false;
-        boolean isRightObjectDetected = false;
+        boolean isLeftObjectDetected;
+        boolean isMiddleObjectDetected;
+        boolean isRightObjectDetected;
         DigitalChannel color = hardwareMap.get(DigitalChannel.class, "color");
         DigitalChannel boardside = hardwareMap.get(DigitalChannel.class, "boardside");
         color.setMode(DigitalChannel.Mode.INPUT);
@@ -26,26 +38,111 @@ public class RobotFullAutonomous extends LinearOpMode {
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
         middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
+        String side = null;
+        String colorvalue = null;
         if (color.getState()) {
             telemetry.addData("Color", "Red");
-            String colorvalue = "red";
+            colorvalue = "red";
         }
         if (!color.getState()) {
             telemetry.addData("Color", "Blue");
-            String colorvalue = "blue";
+            colorvalue = "blue";
         }
         if (boardside.getState()) {
             telemetry.addData("Side", "Board");
-            String side = "board";
+            side = "board";
 
         }
         if (!boardside.getState()) {
             telemetry.addData("Side", "Audience");
-            String side = "audience";
+            side = "audience";
         }
 
-        if (runCount >1){
 
+        waitForStart();
+        double rightDistance = right.getDistance(DistanceUnit.CM);
+        double middleDistance = middle.getDistance(DistanceUnit.CM);
+        double leftDistance = left.getDistance(DistanceUnit.CM);
+
+        isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
+        isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
+        isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
+
+
+        while (opModeIsActive()) {
+            if (Objects.equals(side, "board")) {
+                if (Objects.equals(colorvalue, "red")) {
+                    if (isRightObjectDetected) {
+                        //run red boardside right
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isMiddleObjectDetected) {
+                        //run red boardside middle
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isLeftObjectDetected) {
+                        //run red boardside left
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    }
+                } else if (Objects.equals(colorvalue, "blue")) {
+                    if (isRightObjectDetected) {
+                        //run blue boardside right
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isMiddleObjectDetected) {
+                        //run blue boardside middle
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isLeftObjectDetected) {
+                        //run blue boardside left
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    }
+                }
+            } else if (Objects.equals(side, "audience")) {
+                if (Objects.equals(colorvalue, "red")) {
+                    if (isRightObjectDetected) {
+                        //run red audience right
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isMiddleObjectDetected) {
+                        //run red audience middle
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isLeftObjectDetected) {
+                        //run red audience left
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    }
+                } else if (Objects.equals(colorvalue, "blue")) {
+                    if (isRightObjectDetected) {
+                        //run blue audience right
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isMiddleObjectDetected) {
+                        //run blue audience middle
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    } else if (isLeftObjectDetected) {
+                        //run blue audience left
+                        pixelOnBoard();
+                        runCount = runCount + 1;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

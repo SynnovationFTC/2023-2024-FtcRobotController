@@ -17,7 +17,6 @@ public class RRSplineTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(11.08, -61.62, Math.toRadians(90.00));
         TrajectorySequence traj = drive.trajectorySequenceBuilder(new Pose2d(11.66, -62.17, Math.toRadians(90.00)))
                 .splineTo(new Vector2d(11.66, -32.91), Math.toRadians(90.00))
                 .lineToLinearHeading(new Pose2d(25.60, -53.71, Math.toRadians(-27.91)))
