@@ -86,6 +86,8 @@ public class RobotFullDrive extends LinearOpMode {
     private DcMotor rightFrontDrive = null;  //  Used to control the right front drive wheel
     private DcMotor leftBackDrive = null;  //  Used to control the left back drive wheel
     private DcMotor rightBackDrive = null;  //  Used to control the right back drive wheel
+    private DcMotor geckomotor = null;
+    private DcMotor bootmotor = null;
 
     @Override
     public void runOpMode() {
@@ -200,6 +202,14 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
         DcMotor geckowheel = hardwareMap.get(DcMotor.class, "geckomotor");
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
+        geckomotor = hardwareMap.get(DcMotor.class, "geckomotor");
+        bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
+        Servo top = hardwareMap.get(Servo.class, "topservo");
+        top.setDirection(Servo.Direction.REVERSE);
+        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
+        Servo door = hardwareMap.get(Servo.class, "doorservo");
+        door.setDirection(Servo.Direction.REVERSE);
+        top.setDirection(Servo.Direction.REVERSE);
         // Calculate wheel powers.
         double leftFrontPower = x + y - yaw;
         double rightFrontPower = x - y + yaw;
@@ -217,13 +227,72 @@ public class RobotFullDrive extends LinearOpMode {
             leftBackPower /= max;
             rightBackPower /= max;
         }
-
+        double initialtopservoposition = 0;
+        double initialbottomservoposition = 0;
+        waitForStart();
+        top.setPosition(initialtopservoposition);
+        bottom.setPosition(initialbottomservoposition);
         // Send powers to the wheels.
         leftFrontDrive.setPower(leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
+        if (gamepad2.dpad_down) {
+            top.setPosition(0);
+            bottom.setPosition(0);
+            telemetry.addData("Top Servo Position:", top.getPosition());
+        }
+        if (gamepad2.dpad_up) {
+            top.setPosition(0.23);
+            bottom.setPosition(0.4);
+            telemetry.addData("Top Servo Position:", top.getPosition());
 
+        }
+        if (gamepad2.dpad_left) {
+            top.setPosition(0.35);
+            bottom.setPosition(0.8);
+            telemetry.addData("Bottom Servo Position:", bottom.getPosition());
+        }
+
+        if (gamepad2.y) {
+            door.setPosition(0.01);
+            telemetry.addData("door Servo Position:", top.getPosition());
+        }
+        if (gamepad2.x) {
+            bottom.setPosition(0.08);
+            telemetry.addData("door Position:", top.getPosition());
+
+        }
+        if (gamepad2.a) {
+            door.setPosition(0.27);
+            telemetry.addData("door Position:", top.getPosition());
+
+        }
+        telemetry.update();
+
+        if (gamepad2.b) {
+            if (gamepad2.right_trigger > 0) {
+                geckomotor.setDirection(DcMotorSimple.Direction.FORWARD);
+                geckomotor.setPower(gamepad2.right_trigger);
+                bootmotor.setDirection(DcMotorSimple.Direction.FORWARD);
+                bootmotor.setPower(gamepad2.right_trigger);
+                telemetry.addData("Power", gamepad2.right_trigger);
+            } else {
+                geckomotor.setPower(0);
+                bootmotor.setPower(0);
+            }
+            if (gamepad2.left_trigger > 0) {
+                geckomotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                geckomotor.setPower(gamepad2.left_trigger);
+                bootmotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                bootmotor.setPower(gamepad2.left_trigger);
+                telemetry.addData("Power", gamepad2.left_trigger);
+
+            } else {
+                geckomotor.setPower(0);
+                bootmotor.setPower(0);
+            }
+        }
         if (gamepad1.x) {
 
             if (gamepad1.dpad_up) {
