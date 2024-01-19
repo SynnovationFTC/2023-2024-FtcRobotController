@@ -79,9 +79,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp()
 public class RobotFullDrive extends LinearOpMode {
 
-    //  Set the GAIN constants to control the relationship between the measured position error, and how much power is
-    //  applied to the drive motors to correct the error.
-    //  Drive = Error * Gain    Make these values smaller for smoother control, or larger for a more aggressive response.
     private DcMotor leftFrontDrive = null;  //  Used to control the left front drive wheel
     private DcMotor rightFrontDrive = null;  //  Used to control the right front drive wheel
     private DcMotor leftBackDrive = null;  //  Used to control the left back drive wheel
@@ -233,42 +230,42 @@ public class RobotFullDrive extends LinearOpMode {
                 dronelauncher.setPosition(0.5);
             }
         }
-        if (gamepad1.b) {
-            if (gamepad1.right_trigger > 0) {
+        if (gamepad2.b) {
+            if (gamepad2.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
                 rightlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
-                leftlinearactuator.setPower(gamepad1.right_trigger);
-                rightlinearactuator.setPower(gamepad1.right_trigger);
+                leftlinearactuator.setPower(gamepad2.right_trigger);
+                rightlinearactuator.setPower(gamepad2.right_trigger);
             } else {
                 leftlinearactuator.setPower(0);
                 rightlinearactuator.setPower(0);
             }
-            if (gamepad1.left_trigger > 0) {
+            if (gamepad2.left_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
                 rightlinearactuator.setDirection(DcMotorSimple.Direction.REVERSE);
-                leftlinearactuator.setPower(gamepad1.left_trigger);
-                rightlinearactuator.setPower(gamepad1.left_trigger);
+                leftlinearactuator.setPower(gamepad2.left_trigger);
+                rightlinearactuator.setPower(gamepad2.left_trigger);
 
             } else {
                 leftlinearactuator.setPower(0);
                 rightlinearactuator.setPower(0);
             }
         }
-        if (gamepad1.a) {
-            if (gamepad1.right_trigger > 0) {
+        if (gamepad2.a) {
+            if (gamepad2.right_trigger > 0) {
                 geckowheel.setDirection(DcMotorSimple.Direction.FORWARD);
                 bootwheel.setDirection(DcMotorSimple.Direction.FORWARD);
-                geckowheel.setPower(gamepad1.right_trigger);
-                bootwheel.setPower(gamepad1.right_trigger);
+                geckowheel.setPower(gamepad2.right_trigger);
+                bootwheel.setPower(gamepad2.right_trigger);
             } else {
                 bootwheel.setPower(0);
                 geckowheel.setPower(0);
             }
-            if (gamepad1.left_trigger > 0) {
+            if (gamepad2.left_trigger > 0) {
                 geckowheel.setDirection(DcMotorSimple.Direction.REVERSE);
                 bootwheel.setDirection(DcMotorSimple.Direction.REVERSE);
-                geckowheel.setPower(gamepad1.left_trigger);
-                bootwheel.setPower(gamepad1.left_trigger);
+                geckowheel.setPower(gamepad2.left_trigger);
+                bootwheel.setPower(gamepad2.left_trigger);
 
             } else {
                 bootwheel.setPower(0);
