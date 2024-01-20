@@ -92,7 +92,8 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .addDisplacementMarker(() -> {
                     initOuttake();
                 })
-                .splineToLinearHeading(new Pose2d(48.91, -40.23, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(48.91, -39.77, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .waitSeconds(0.5)
                 .addDisplacementMarker(() -> {
                     releaseOuttake();
                 })
