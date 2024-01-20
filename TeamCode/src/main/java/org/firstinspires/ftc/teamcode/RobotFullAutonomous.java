@@ -89,7 +89,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         }).splineToLinearHeading(new Pose2d(48.91, -39.77, Math.toRadians(0.00)), Math.toRadians(0.00)).waitSeconds(0.5).addDisplacementMarker(() -> {
             releaseOuttake();
         }).build();
-        TrajectorySequence redboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(12.34, -33.83, Math.toRadians(90.00))).lineTo(new Vector2d(14.17, -52.11)).splineTo(new Vector2d(35.89, -52.57), Math.toRadians(-1.21)).addDisplacementMarker(() -> {
+        TrajectorySequence redboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(12, -33.1, Math.toRadians(90.00))).lineTo(new Vector2d(14.17, -52.11)).splineTo(new Vector2d(35.89, -52.57), Math.toRadians(-1.21)).addDisplacementMarker(() -> {
             initOuttake();
         }).splineTo(new Vector2d(39.09, -38.63), Math.toRadians(77.07)).splineToLinearHeading(new Pose2d(48.6, -32.23, Math.toRadians(0.00)), Math.toRadians(0.00)).addDisplacementMarker(() -> {
             releaseOuttake();
@@ -104,7 +104,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         }).splineTo(new Vector2d(38.86, -16.91), Math.toRadians(-43.94)).splineToLinearHeading(new Pose2d(49.00, -39.50, Math.toRadians(0.00)), Math.toRadians(0.00)).addDisplacementMarker(() -> {
             releaseOuttake();
         }).build();
-        
+
 
 
         waitForStart();
@@ -127,25 +127,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                         //run red boardside right
                         drive.followTrajectorySequence(redboardsideright);
                         break;
-                    } else if (!isRightObjectDetected && isLeftObjectDetected) {
+                    } else if (!isRightObjectDetected && !isLeftObjectDetected) {
+                        drive.setPoseEstimate(redboardsidemiddle.start());
                         //run red boardside middle
-                        //pause in the middle of the path
-                        initOuttake();
-                        //continue path
-                        //after path is complete
-                        releaseOuttake();
-                        runCount = runCount + 1;
+                        drive.followTrajectorySequence(redboardsidemiddle);
                         break;
                     } else if (isLeftObjectDetected) {
+                        drive.setPoseEstimate(redboardsideleft.start());
                         //run red boardside left
-                        //pause in the middle of the path
-                        initOuttake();
-                        //continue path
-                        //after path is complete
-                        //releaseOuttake();
-                        //runCount = runCount + 1;
-                        //break;
-                        //}
+                        drive.followTrajectorySequence(redboardsideleft);
+                        break;
                     } else if (Objects.equals(colorvalue, "blue")) {
                         if (isRightObjectDetected) {
                             //run blue boardside right
