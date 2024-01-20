@@ -1,24 +1,41 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 import java.util.Objects;
 
 @Autonomous
 public class RobotFullAutonomous extends LinearOpMode {
 
-    static void pixelOnBoard() {
-        //make everything run at the same using multithreading
-        //outtake a pixel on the board
+    void initOuttake() {
+        Servo top = hardwareMap.get(Servo.class, "topservo");
+        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
+        Servo door = hardwareMap.get(Servo.class, "doorservo");
+        door.setDirection(Servo.Direction.REVERSE);
+        top.setDirection(Servo.Direction.REVERSE);
+        bottom.setPosition(0.08);
+        sleep(550);
+        top.setPosition(0.23);
+        bottom.setPosition(0.4);
+        sleep(50);
+        top.setPosition(0.35);
+        bottom.setPosition(0.74);
+    }
+
+    void releaseOuttake() {
+        Servo top = hardwareMap.get(Servo.class, "topservo");
+        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
+        Servo door = hardwareMap.get(Servo.class, "doorservo");
+        door.setDirection(Servo.Direction.REVERSE);
+        top.setDirection(Servo.Direction.REVERSE);
+        door.setPosition(0.27);
     }
 
     @Override
@@ -38,6 +55,12 @@ public class RobotFullAutonomous extends LinearOpMode {
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
         middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
+        Servo top = hardwareMap.get(Servo.class, "topservo");
+        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
+        Servo door = hardwareMap.get(Servo.class, "doorservo");
+        door.setDirection(Servo.Direction.REVERSE);
+        top.setDirection(Servo.Direction.REVERSE);
+
         String side = null;
         String colorvalue = null;
         if (color.getState()) {
@@ -74,34 +97,58 @@ public class RobotFullAutonomous extends LinearOpMode {
                 if (Objects.equals(colorvalue, "red")) {
                     if (isRightObjectDetected) {
                         //run red boardside right
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isMiddleObjectDetected) {
                         //run red boardside middle
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isLeftObjectDetected) {
                         //run red boardside left
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     }
                 } else if (Objects.equals(colorvalue, "blue")) {
                     if (isRightObjectDetected) {
                         //run blue boardside right
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isMiddleObjectDetected) {
                         //run blue boardside middle
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isLeftObjectDetected) {
                         //run blue boardside left
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     }
@@ -110,34 +157,58 @@ public class RobotFullAutonomous extends LinearOpMode {
                 if (Objects.equals(colorvalue, "red")) {
                     if (isRightObjectDetected) {
                         //run red audience right
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isMiddleObjectDetected) {
                         //run red audience middle
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isLeftObjectDetected) {
                         //run red audience left
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     }
                 } else if (Objects.equals(colorvalue, "blue")) {
                     if (isRightObjectDetected) {
                         //run blue audience right
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isMiddleObjectDetected) {
                         //run blue audience middle
-                        pixelOnBoard();
+                        //pause in the middle of the path
+                        initOuttake();
+                        //continue path
+                        //after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isLeftObjectDetected) {
                         //run blue audience left
-                        pixelOnBoard();
+                        //TODO pause in the middle of the path
+                        initOuttake();
+                        //TODO continue path
+                        //TODO after path is complete
+                        releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     }

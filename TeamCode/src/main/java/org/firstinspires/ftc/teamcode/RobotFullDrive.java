@@ -235,8 +235,13 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("Top Servo Position:", top.getPosition());
         }
         if (gamepad2.dpad_up) {
+            bottom.setPosition(0.08);
+            sleep(550);
             top.setPosition(0.23);
             bottom.setPosition(0.4);
+            sleep(50);
+            top.setPosition(0.35);
+            bottom.setPosition(0.74);
             telemetry.addData("Top Servo Position:", top.getPosition());
 
         }
@@ -246,7 +251,7 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("Bottom Servo Position:", bottom.getPosition());
         }
 
-        if (gamepad2.y) {
+        if (gamepad2.left_bumper) {
             door.setPosition(0.01);
             telemetry.addData("door Servo Position:", top.getPosition());
         }
@@ -255,7 +260,7 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("door Position:", top.getPosition());
 
         }
-        if (gamepad2.dpad_left) {
+        if (gamepad2.right_bumper) {
             door.setPosition(0.27);
             telemetry.addData("door Position:", top.getPosition());
 
