@@ -85,15 +85,14 @@ public class RobotFullAutonomous extends LinearOpMode {
             side = "audience";
         }
         TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00)))
-                .splineTo(new Vector2d(14.40, -53.94), Math.toRadians(90.00))
-                .lineToLinearHeading(new Pose2d(13.94, -33.60, Math.toRadians(0.00)))
-                .lineToLinearHeading(new Pose2d(2.51, -37.26, Math.toRadians(0.00)))
-                .splineTo(new Vector2d(28.57, -58.74), Math.toRadians(-5.46))
+                .lineToLinearHeading(new Pose2d(22.63, -57.60, Math.toRadians(90.00)))
+                .lineToLinearHeading(new Pose2d(23.31, -41.14, Math.toRadians(90.00)))
+                .lineToLinearHeading(new Pose2d(23.09, -57.60, Math.toRadians(90.00)))
+                .splineTo(new Vector2d(38.63, -57.37), Math.toRadians(0.84))
                 .addDisplacementMarker(() -> {
                     initOuttake();
                 })
-                .splineToLinearHeading(new Pose2d(48.60, -40.00, Math.toRadians(0.00)), Math.toRadians(0.00))
-
+                .splineToLinearHeading(new Pose2d(48.91, -40.23, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     releaseOuttake();
                 })
