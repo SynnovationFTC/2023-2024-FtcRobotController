@@ -21,12 +21,13 @@ public class RRSplineTestDefault extends LinearOpMode {
         x+=1;
         waitForStart();
         if (x==1){
-            TrajectorySequence untitled0 = drive.trajectorySequenceBuilder(new Pose2d(10.26, -60.98, Math.toRadians(90.00)))
-                    .lineTo(new Vector2d(22.04, -60.83))
-                    .lineTo(new Vector2d(20.38, -39.85))
-                    .lineTo(new Vector2d(27.17, -55.55))
-                    .lineTo(new Vector2d(39.09, -38.04))
-                    .splineToLinearHeading(new Pose2d(46.49, -37.13, Math.toRadians(0.00)), Math.toRadians(0.00))
+            TrajectorySequence untitled0 = drive.trajectorySequenceBuilder(new Pose2d(12.08, -61.43, Math.toRadians(90.00)))
+                    .UNSTABLE_addTemporalMarkerOffset(3.33,() -> {})
+                    .lineTo(new Vector2d(23.55, -61.74))
+                    .lineTo(new Vector2d(23.40, -38.79))
+                    .splineTo(new Vector2d(8.15, -35.02), Math.toRadians(180.00))
+                    .lineTo(new Vector2d(35.17, -36.08))
+                    .splineToLinearHeading(new Pose2d(43.62, -36.38, Math.toRadians(2.16)), Math.toRadians(2.16))
                     .build();
             drive.setPoseEstimate(untitled0.start());
 
