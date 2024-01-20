@@ -84,20 +84,22 @@ public class RobotFullAutonomous extends LinearOpMode {
             telemetry.addData("Side", "Audience");
             side = "audience";
         }
-        TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00)))
-                .lineToLinearHeading(new Pose2d(22.63, -57.60, Math.toRadians(90.00)))
-                .lineToLinearHeading(new Pose2d(23.31, -41.14, Math.toRadians(90.00)))
-                .lineToLinearHeading(new Pose2d(23.09, -57.60, Math.toRadians(90.00)))
-                .splineTo(new Vector2d(38.63, -57.37), Math.toRadians(0.84))
+        TrajectorySequence redboardisright = drive.trajectorySequenceBuilder(new Pose2d(10.26, -60.98, Math.toRadians(90.00)))
+                .lineTo(new Vector2d(22.04, -60.83))
+                .lineTo(new Vector2d(20.38, -39.85))
+                .lineTo(new Vector2d(27.17, -55.55))
+                .lineTo(new Vector2d(39.09, -38.04))
+                .splineToLinearHeading(new Pose2d(46.49, -37.13, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     initOuttake();
                 })
-                .splineToLinearHeading(new Pose2d(48.91, -39.77, Math.toRadians(0.00)), Math.toRadians(0.00))
-                .waitSeconds(0.5)
+                .splineToLinearHeading(new Pose2d(46.49, -37.13, Math.toRadians(0.00)), Math.toRadians(0.00))                .waitSeconds(0.5)
                 .addDisplacementMarker(() -> {
                     releaseOuttake();
                 })
                 .build();
+            drive.setPoseEstimate(redboardisright.start());
+
         waitForStart();
         double rightDistance = right.getDistance(DistanceUnit.CM);
         //double middleDistance = middle.getDistance(DistanceUnit.CM);
@@ -117,9 +119,9 @@ public class RobotFullAutonomous extends LinearOpMode {
                         //run red boardside right
                         //pause in the middle of the path
                         //initOuttake();
-                        drive.setPoseEstimate(redboardsideright.start());
+                        drive.setPoseEstimate(redboardisright.start());
                         //sleep(1000);
-                        drive.followTrajectorySequence(redboardsideright);
+                        drive.followTrajectorySequence(redboardisright);
                         //continue path
                         //after path is complete
                         //releaseOuttake();
