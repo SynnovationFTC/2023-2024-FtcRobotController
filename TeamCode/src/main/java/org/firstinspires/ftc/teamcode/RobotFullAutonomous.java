@@ -110,102 +110,91 @@ public class RobotFullAutonomous extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            if (Objects.equals(side, "board")) {
+            telemetry.addData("Right Distance", rightDistance);
+            telemetry.addData("Left Distance", leftDistance);
+            telemetry.addData("Is Right Object Detected", isRightObjectDetected);
+            telemetry.addData("Is Left Object Detected", isLeftObjectDetected);
+            telemetry.addData("Is Middle Object Detected", isMiddleObjectDetected);
+            telemetry.addData("Side", side);
+            telemetry.addData("Color", colorvalue);
+            telemetry.update();
 
+            if (Objects.equals(side, "board")) {
                 if (Objects.equals(colorvalue, "red")) {
                     if (isRightObjectDetected) {
                         telemetry.addData("Object Detected:", "Right");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsideright.start());
-                        //run red boardside right
                         drive.followTrajectorySequence(redboardsideright);
-                        break;
                     } else if (isMiddleObjectDetected) {
                         telemetry.addData("Object Detected:", "Middle");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsidemiddle.start());
-                        //run red boardside middle
                         drive.followTrajectorySequence(redboardsidemiddle);
-                        break;
                     } else if (isLeftObjectDetected) {
                         telemetry.addData("Object Detected:", "Left");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsideleft.start());
-                        //run red boardside left
                         drive.followTrajectorySequence(redboardsideleft);
-                        break;
-                    } else if (Objects.equals(colorvalue, "blue")) {
-                        if (isRightObjectDetected) {
-                            telemetry.addData("Object Detected:", "Right");
-                            telemetry.update();
-                            drive.setPoseEstimate(blueboardsideright.start());
-                            //run blue boardside right
-                            drive.followTrajectorySequence(blueboardsideright);
-                            break;
-                        } else if (isMiddleObjectDetected) {
-                            //run blue boardside middle
-                            telemetry.addData("Object Detected:", "Middle");
-                            telemetry.update();
-                            drive.setPoseEstimate(blueboardsidemiddle.start());
-                            drive.followTrajectorySequence(blueboardsidemiddle);
-                            break;
-                        } else if (isLeftObjectDetected) {
-                            //run blue boardside left
-                            telemetry.addData("Object Detected:", "Left");
-                            telemetry.update();
-                            drive.setPoseEstimate(blueboardsideleft.start());
-                            drive.followTrajectorySequence(blueboardsideleft);
-                            break;
-                            //}
-                        }
-                    } else if (Objects.equals(side, "audience")) {
-                        if (Objects.equals(colorvalue, "red")) {
-                            if (isRightObjectDetected) {
-                                //run red audience right
-                                telemetry.addData("Object Detected:", "Right");
-                                telemetry.update();
-                                drive.setPoseEstimate(redaudienceright.start());
-                                drive.followTrajectorySequence(redaudienceright);
-                                break;
-                            } else if (isMiddleObjectDetected) {
-                                //run red audience middle
-                                telemetry.addData("Object Detected:", "Middle");
-                                telemetry.update();
-                                drive.setPoseEstimate(redaudiencemiddle.start());
-                                drive.followTrajectorySequence(redaudiencemiddle);
-                                break;
-                            } else if (isLeftObjectDetected) {
-                                //run red audience left
-                                telemetry.addData("Object Detected:", "Left");
-                                telemetry.update();
-                                drive.setPoseEstimate(redaudienceleft.start());
-                                drive.followTrajectorySequence(redaudienceleft);
-                                break;
-                            }
-                        } else if (Objects.equals(colorvalue, "blue")) {
-                            if (isRightObjectDetected) {
-                                //run blue audience right
-                                telemetry.addData("Object Detected:", "Right");
-                                telemetry.update();
-                                drive.setPoseEstimate(blueaudienceright.start());
-                                drive.followTrajectorySequence(blueaudienceright);
-                                break;
-                            } else if (isMiddleObjectDetected) {
-                                //run blue audience middle
-                                telemetry.addData("Object Detected:", "Middle");
-                                telemetry.update();
-                                drive.setPoseEstimate(blueaudiencemiddle.start());
-                                drive.followTrajectorySequence(blueaudiencemiddle);
-                                break;
-                            } else if (isLeftObjectDetected) {
-                                //run blue audience left
-                                telemetry.addData("Object Detected:", "Left");
-                                telemetry.update();
-                                drive.setPoseEstimate(blueaudienceleft.start());
-                                drive.followTrajectorySequence(blueaudienceleft);
-                                break;
-                            }
-                        }
+                    }
+                } else if (Objects.equals(colorvalue, "blue")) {
+                    // Add similar telemetry and trajectory execution for the blue case
+                    telemetry.addData("Color", "Blue");
+                    telemetry.update();
+                    if (isRightObjectDetected) {
+                        telemetry.addData("Object Detected:", "Right");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueboardsideright.start());
+                        drive.followTrajectorySequence(blueboardsideright);
+                    } else if (isMiddleObjectDetected) {
+                        telemetry.addData("Object Detected:", "Middle");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueboardsidemiddle.start());
+                        drive.followTrajectorySequence(blueboardsidemiddle);
+                    } else if (isLeftObjectDetected) {
+                        telemetry.addData("Object Detected:", "Left");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueboardsideleft.start());
+                        drive.followTrajectorySequence(blueboardsideleft);
+                    }
+                }
+            } else if (Objects.equals(side, "audience")) {
+                if (Objects.equals(colorvalue, "red")) {
+                    if (isRightObjectDetected) {
+                        telemetry.addData("Object Detected:", "Right");
+                        telemetry.update();
+                        drive.setPoseEstimate(redaudienceright.start());
+                        drive.followTrajectorySequence(redaudienceright);
+                    } else if (isMiddleObjectDetected) {
+                        telemetry.addData("Object Detected:", "Middle");
+                        telemetry.update();
+                        drive.setPoseEstimate(redaudiencemiddle.start());
+                        drive.followTrajectorySequence(redaudiencemiddle);
+                    } else if (isLeftObjectDetected) {
+                        telemetry.addData("Object Detected:", "Left");
+                        telemetry.update();
+                        drive.setPoseEstimate(redaudienceleft.start());
+                        drive.followTrajectorySequence(redaudienceleft);
+                    }
+                } else if (Objects.equals(colorvalue, "blue")) {
+                    // Add similar telemetry and trajectory execution for the blue case
+                    telemetry.addData("Color", "Blue");
+                    telemetry.update();
+                    if (isRightObjectDetected) {
+                        telemetry.addData("Object Detected:", "Right");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueaudienceright.start());
+                        drive.followTrajectorySequence(blueaudienceright);
+                    } else if (isMiddleObjectDetected) {
+                        telemetry.addData("Object Detected:", "Middle");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueaudiencemiddle.start());
+                        drive.followTrajectorySequence(blueaudiencemiddle);
+                    } else if (isLeftObjectDetected) {
+                        telemetry.addData("Object Detected:", "Left");
+                        telemetry.update();
+                        drive.setPoseEstimate(blueaudienceleft.start());
+                        drive.followTrajectorySequence(blueaudienceleft);
                     }
                 }
             }
