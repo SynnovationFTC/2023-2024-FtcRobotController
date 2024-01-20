@@ -84,27 +84,18 @@ public class RobotFullAutonomous extends LinearOpMode {
             telemetry.addData("Side", "Audience");
             side = "audience";
         }
-        TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(22.63, -57.60, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(23.31, -41.14, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(23.09, -57.60, Math.toRadians(90.00))).splineTo(new Vector2d(38.63, -57.37), Math.toRadians(0.84)).addDisplacementMarker(() -> {
-            initOuttake();
-        }).splineToLinearHeading(new Pose2d(48.91, -39.77, Math.toRadians(0.00)), Math.toRadians(0.00)).waitSeconds(0.5).addDisplacementMarker(() -> {
-            releaseOuttake();
-        }).build();
-        TrajectorySequence redboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00))).lineToLinearHeading(new Pose2d(12, -33.1, Math.toRadians(90.00))).lineTo(new Vector2d(14.17, -52.11)).splineTo(new Vector2d(35.89, -52.57), Math.toRadians(-1.21)).addDisplacementMarker(() -> {
-            initOuttake();
-        }).splineTo(new Vector2d(39.09, -38.63), Math.toRadians(77.07)).splineToLinearHeading(new Pose2d(48.6, -32.23, Math.toRadians(0.00)), Math.toRadians(0.00)).addDisplacementMarker(() -> {
-            releaseOuttake();
-        }).build();
-        TrajectorySequence redboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00))).splineTo(new Vector2d(30.86, -37.03), Math.toRadians(53.12)).splineTo(new Vector2d(9.37, -30.63), Math.toRadians(180.00)).lineToLinearHeading(new Pose2d(33.14, -32.00, Math.toRadians(180.00))).addDisplacementMarker(() -> {
-            initOuttake();
-        }).lineToLinearHeading(new Pose2d(48.60, -27.20, Math.toRadians(0.00))).addDisplacementMarker(() -> {
-            releaseOuttake();
-        }).build();
-        TrajectorySequence redaudiencesideright = drive.trajectorySequenceBuilder(new Pose2d(-36.00, -61.50, Math.toRadians(90.00))).lineTo(new Vector2d(-51.20, -34.74)).lineToLinearHeading(new Pose2d(-34.06, -30.40, Math.toRadians(0.00))).lineTo(new Vector2d(-51.89, -30.63)).splineTo(new Vector2d(-51.43, -11.89), Math.toRadians(90.00)).splineTo(new Vector2d(-31.31, -10.00), Math.toRadians(0.00)).splineTo(new Vector2d(18.29, -10.00), Math.toRadians(0.00)).addDisplacementMarker(() -> {
-            initOuttake();
-        }).splineTo(new Vector2d(38.86, -16.91), Math.toRadians(-43.94)).splineToLinearHeading(new Pose2d(49.00, -39.50, Math.toRadians(0.00)), Math.toRadians(0.00)).addDisplacementMarker(() -> {
-            releaseOuttake();
-        }).build();
-
+        TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(12.08, -62.19, Math.toRadians(90.00))).lineTo(new Vector2d(24.00, -62.19)).lineTo(new Vector2d(23.09, -37.43)).lineTo(new Vector2d(35.62, -59.77)).lineTo(new Vector2d(36.08, -38.19)).splineToLinearHeading(new Pose2d(43.17, -36.83, Math.toRadians(0.65)), Math.toRadians(0.65)).build();
+        TrajectorySequence redboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(11.92, -61.74, Math.toRadians(90.00))).lineTo(new Vector2d(11.77, -34.11)).lineTo(new Vector2d(24.30, -50.57)).lineTo(new Vector2d(37.74, -35.17)).splineToLinearHeading(new Pose2d(48.45, -35.62, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence redboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(11.02, -60.53, Math.toRadians(90.00))).lineTo(new Vector2d(23.25, -60.83)).lineTo(new Vector2d(23.25, -35.62)).splineTo(new Vector2d(8.75, -35.62), Math.toRadians(183.05)).lineTo(new Vector2d(31.09, -34.42)).splineToLinearHeading(new Pose2d(47.70, -35.62, Math.toRadians(-0.59)), Math.toRadians(-0.59)).build();
+        TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.28, -62.04, Math.toRadians(90.00))).lineTo(new Vector2d(-49.06, -62.04)).lineTo(new Vector2d(-48.75, -35.17)).splineTo(new Vector2d(-32.30, -34.72), Math.toRadians(0.00)).lineTo(new Vector2d(-52.98, -33.81)).lineTo(new Vector2d(-48.91, -10.87)).lineTo(new Vector2d(17.66, -12.68)).lineTo(new Vector2d(37.58, -27.62)).lineTo(new Vector2d(37.58, -38.19)).splineToLinearHeading(new Pose2d(49.06, -36.08, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence redaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-37.58, -60.38, Math.toRadians(90.00))).lineTo(new Vector2d(-36.08, -33.36)).lineTo(new Vector2d(-55.40, -50.57)).lineTo(new Vector2d(-51.62, -11.47)).lineTo(new Vector2d(-14.64, -11.17)).lineTo(new Vector2d(34.72, -8.30)).lineTo(new Vector2d(34.57, -35.62)).splineToLinearHeading(new Pose2d(48.30, -36.23, Math.toRadians(3.65)), Math.toRadians(3.65)).build();
+        TrajectorySequence redaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.28, -62.04, Math.toRadians(90.00))).lineTo(new Vector2d(-49.06, -62.04)).lineTo(new Vector2d(-46.94, -39.40)).lineTo(new Vector2d(-38.94, -57.81)).lineTo(new Vector2d(-33.36, -11.47)).lineTo(new Vector2d(3.47, -9.81)).lineTo(new Vector2d(34.11, -13.13)).lineTo(new Vector2d(36.08, -34.26)).splineToLinearHeading(new Pose2d(48.00, -35.02, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueboardsideright = drive.trajectorySequenceBuilder(new Pose2d(11.47, 60.38, Math.toRadians(270.00))).lineTo(new Vector2d(24.00, 60.23)).lineTo(new Vector2d(23.70, 31.70)).splineTo(new Vector2d(8.45, 33.66), Math.toRadians(178.59)).lineTo(new Vector2d(41.66, 33.51)).splineToLinearHeading(new Pose2d(47.09, 33.21, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(11.77, 60.98, Math.toRadians(270.00))).lineTo(new Vector2d(11.77, 34.72)).lineTo(new Vector2d(24.45, 50.11)).lineTo(new Vector2d(35.62, 40.00)).splineToLinearHeading(new Pose2d(48.30, 36.23, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(11.77, 60.98, Math.toRadians(270.00))).lineTo(new Vector2d(24.00, 60.83)).lineTo(new Vector2d(23.55, 36.23)).lineTo(new Vector2d(23.70, 54.34)).lineTo(new Vector2d(38.79, 40.91)).splineToLinearHeading(new Pose2d(48.15, 38.04, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-35.77, 60.83, Math.toRadians(270.00))).lineTo(new Vector2d(-48.15, 61.13)).lineTo(new Vector2d(-47.55, 38.49)).lineTo(new Vector2d(-37.43, 55.55)).lineTo(new Vector2d(-37.58, -1.51)).lineTo(new Vector2d(17.06, 5.89)).lineTo(new Vector2d(36.83, 22.94)).lineTo(new Vector2d(36.38, 38.19)).splineToLinearHeading(new Pose2d(48.15, 35.47, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.38, 60.08, Math.toRadians(270.00))).lineTo(new Vector2d(-36.08, 33.81)).lineTo(new Vector2d(-52.53, 46.79)).lineTo(new Vector2d(-49.06, 2.72)).lineTo(new Vector2d(-17.06, -1.81)).lineTo(new Vector2d(24.15, 2.72)).lineTo(new Vector2d(40.60, 28.83)).splineToLinearHeading(new Pose2d(48.60, 35.02, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
+        TrajectorySequence blueaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-35.77, 60.83, Math.toRadians(270.00))).lineTo(new Vector2d(-48.15, 61.13)).lineTo(new Vector2d(-47.85, 33.96)).splineTo(new Vector2d(-32.15, 34.26), Math.toRadians(-1.19)).lineTo(new Vector2d(-51.02, 32.60)).lineTo(new Vector2d(-41.66, 5.89)).lineTo(new Vector2d(11.62, 4.98)).lineTo(new Vector2d(32.60, 4.98)).lineTo(new Vector2d(35.32, 32.15)).splineToLinearHeading(new Pose2d(48.30, 35.47, Math.toRadians(0.00)), Math.toRadians(0.00)).build();
 
 
         waitForStart();
@@ -114,8 +105,8 @@ public class RobotFullAutonomous extends LinearOpMode {
 
         isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
         //isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
-        //isMiddleObjectDetected =
         isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
+        isMiddleObjectDetected = (!isRightObjectDetected && !isLeftObjectDetected);
 
 
         while (opModeIsActive()) {
@@ -123,47 +114,47 @@ public class RobotFullAutonomous extends LinearOpMode {
 
                 if (Objects.equals(colorvalue, "red")) {
                     if (isRightObjectDetected) {
+                        telemetry.addData("Object Detected:", "Right");
+                        telemetry.update();
                         drive.setPoseEstimate(redboardsideright.start());
                         //run red boardside right
                         drive.followTrajectorySequence(redboardsideright);
                         break;
-                    } else if (!isRightObjectDetected && !isLeftObjectDetected) {
+                    } else if (isMiddleObjectDetected) {
+                        telemetry.addData("Object Detected:", "Middle");
+                        telemetry.update();
                         drive.setPoseEstimate(redboardsidemiddle.start());
                         //run red boardside middle
                         drive.followTrajectorySequence(redboardsidemiddle);
                         break;
                     } else if (isLeftObjectDetected) {
+                        telemetry.addData("Object Detected:", "Left");
+                        telemetry.update();
                         drive.setPoseEstimate(redboardsideleft.start());
                         //run red boardside left
                         drive.followTrajectorySequence(redboardsideleft);
                         break;
                     } else if (Objects.equals(colorvalue, "blue")) {
                         if (isRightObjectDetected) {
+                            telemetry.addData("Object Detected:", "Right");
+                            telemetry.update();
+                            drive.setPoseEstimate(blueboardsideright.start());
                             //run blue boardside right
-                            //pause in the middle of the path
-                            initOuttake();
-                            //continue path
-                            //after path is complete
-                            releaseOuttake();
-                            runCount = runCount + 1;
+                            drive.followTrajectorySequence(blueboardsideright);
                             break;
-                        } else if (!isRightObjectDetected && isLeftObjectDetected) {
+                        } else if (isMiddleObjectDetected) {
                             //run blue boardside middle
-                            //pause in the middle of the path
-                            initOuttake();
-                            //continue path
-                            //after path is complete
-                            releaseOuttake();
-                            runCount = runCount + 1;
+                            telemetry.addData("Object Detected:", "Middle");
+                            telemetry.update();
+                            drive.setPoseEstimate(blueboardsidemiddle.start());
+                            drive.followTrajectorySequence(blueboardsidemiddle);
                             break;
                         } else if (isLeftObjectDetected) {
                             //run blue boardside left
-                            //pause in the middle of the path
-                            initOuttake();
-                            //continue path
-                            //after path is complete
-                            releaseOuttake();
-                            //runCount = runCount + 1;
+                            telemetry.addData("Object Detected:", "Left");
+                            telemetry.update();
+                            drive.setPoseEstimate(blueboardsideleft.start());
+                            drive.followTrajectorySequence(blueboardsideleft);
                             break;
                             //}
                         }
@@ -171,59 +162,47 @@ public class RobotFullAutonomous extends LinearOpMode {
                         if (Objects.equals(colorvalue, "red")) {
                             if (isRightObjectDetected) {
                                 //run red audience right
-                                //pause in the middle of the path
-                                initOuttake();
-                                //continue path
-                                //after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Right");
+                                telemetry.update();
+                                drive.setPoseEstimate(redaudienceright.start());
+                                drive.followTrajectorySequence(redaudienceright);
                                 break;
-                            } else if (!isRightObjectDetected && isLeftObjectDetected) {
+                            } else if (isMiddleObjectDetected) {
                                 //run red audience middle
-                                //pause in the middle of the path
-                                initOuttake();
-                                //continue path
-                                //after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Middle");
+                                telemetry.update();
+                                drive.setPoseEstimate(redaudiencemiddle.start());
+                                drive.followTrajectorySequence(redaudiencemiddle);
                                 break;
                             } else if (isLeftObjectDetected) {
                                 //run red audience left
-                                //pause in the middle of the path
-                                initOuttake();
-                                //continue path
-                                //after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Left");
+                                telemetry.update();
+                                drive.setPoseEstimate(redaudienceleft.start());
+                                drive.followTrajectorySequence(redaudienceleft);
                                 break;
                             }
                         } else if (Objects.equals(colorvalue, "blue")) {
                             if (isRightObjectDetected) {
                                 //run blue audience right
-                                //pause in the middle of the path
-                                initOuttake();
-                                //continue path
-                                //after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Right");
+                                telemetry.update();
+                                drive.setPoseEstimate(blueaudienceright.start());
+                                drive.followTrajectorySequence(blueaudienceright);
                                 break;
-                            } else if (!isRightObjectDetected && isLeftObjectDetected) {
+                            } else if (isMiddleObjectDetected) {
                                 //run blue audience middle
-                                //pause in the middle of the path
-                                initOuttake();
-                                //continue path
-                                //after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Middle");
+                                telemetry.update();
+                                drive.setPoseEstimate(blueaudiencemiddle.start());
+                                drive.followTrajectorySequence(blueaudiencemiddle);
                                 break;
                             } else if (isLeftObjectDetected) {
                                 //run blue audience left
-                                //TODO pause in the middle of the path
-                                initOuttake();
-                                //TODO continue path
-                                //TODO after path is complete
-                                releaseOuttake();
-                                runCount = runCount + 1;
+                                telemetry.addData("Object Detected:", "Left");
+                                telemetry.update();
+                                drive.setPoseEstimate(blueaudienceleft.start());
+                                drive.followTrajectorySequence(blueaudienceleft);
                                 break;
                             }
                         }
