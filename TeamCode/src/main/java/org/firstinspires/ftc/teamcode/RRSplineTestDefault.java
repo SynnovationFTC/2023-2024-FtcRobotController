@@ -21,18 +21,16 @@ public class RRSplineTestDefault extends LinearOpMode {
         x+=1;
         waitForStart();
         if (x==1){
-            TrajectorySequence trajright = drive.trajectorySequenceBuilder(new Pose2d(-36.38, -59.32, Math.toRadians(90.00)))
-                    .splineTo(new Vector2d(-56.60, -48.45), Math.toRadians(151.75))
-                    .splineTo(new Vector2d(-47.40, -35.92), Math.toRadians(6.17))
-                    .splineTo(new Vector2d(-30.49, -36.08), Math.toRadians(0.00))
-                    .lineToLinearHeading(new Pose2d(-53.43, -12.68, Math.toRadians(0.00)))
-                    .lineTo(new Vector2d(-16.75, -3.77))
-                    .lineTo(new Vector2d(12.68, -5.58))
-                    .splineTo(new Vector2d(28.83, -17.06), Math.toRadians(-42.73))
-                    .splineTo(new Vector2d(48.75, -23.70), Math.toRadians(0.00))
+            TrajectorySequence untitled0 = drive.trajectorySequenceBuilder(new Pose2d(11.02, -60.38, Math.toRadians(90.00)))
+                    .lineTo(new Vector2d(23.09, -60.08))
+                    .lineTo(new Vector2d(23.25, -36.38))
+                    .lineTo(new Vector2d(37.43, -60.68))
+                    .splineTo(new Vector2d(36.98, -39.25), Math.toRadians(91.21))
+                    .splineTo(new Vector2d(47.85, -39.40), Math.toRadians(-0.90))
                     .build();
-            drive.setPoseEstimate(trajright.start());
-            drive.followTrajectorySequence(trajright);
+            drive.setPoseEstimate(untitled0.start());
+
+            drive.followTrajectorySequence(untitled0);
 
             };
 
