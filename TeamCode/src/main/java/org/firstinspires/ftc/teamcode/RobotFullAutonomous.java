@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -8,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 import java.util.Objects;
 
@@ -20,6 +23,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         Servo door = hardwareMap.get(Servo.class, "doorservo");
         door.setDirection(Servo.Direction.REVERSE);
         top.setDirection(Servo.Direction.REVERSE);
+        door.setPosition(0.01);
         bottom.setPosition(0.08);
         sleep(550);
         top.setPosition(0.23);
@@ -50,10 +54,10 @@ public class RobotFullAutonomous extends LinearOpMode {
         color.setMode(DigitalChannel.Mode.INPUT);
         boardside.setMode(DigitalChannel.Mode.INPUT);
         DistanceSensor left;
-        DistanceSensor middle;
+        //DistanceSensor middle;
         DistanceSensor right;
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
-        middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
+        //middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
         Servo top = hardwareMap.get(Servo.class, "topservo");
         Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
@@ -80,28 +84,45 @@ public class RobotFullAutonomous extends LinearOpMode {
             telemetry.addData("Side", "Audience");
             side = "audience";
         }
+        TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(12.50, -61.50, Math.toRadians(90.00)))
+                .splineTo(new Vector2d(14.40, -53.94), Math.toRadians(90.00))
+                .lineToLinearHeading(new Pose2d(13.94, -33.60, Math.toRadians(0.00)))
+                .lineToLinearHeading(new Pose2d(2.51, -37.26, Math.toRadians(0.00)))
+                .splineTo(new Vector2d(28.57, -58.74), Math.toRadians(-5.46))
+                .addDisplacementMarker(() -> {
+                    initOuttake();
+                })
+                .splineToLinearHeading(new Pose2d(48.60, -40.00, Math.toRadians(0.00)), Math.toRadians(0.00))
 
-
+                .addDisplacementMarker(() -> {
+                    releaseOuttake();
+                })
+                .build();
         waitForStart();
         double rightDistance = right.getDistance(DistanceUnit.CM);
-        double middleDistance = middle.getDistance(DistanceUnit.CM);
+        //double middleDistance = middle.getDistance(DistanceUnit.CM);
         double leftDistance = left.getDistance(DistanceUnit.CM);
 
         isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
-        isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
+        //isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
+        isMiddleObjectDetected = false;
         isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
 
 
         while (opModeIsActive()) {
             if (Objects.equals(side, "board")) {
+
                 if (Objects.equals(colorvalue, "red")) {
-                    if (isRightObjectDetected) {
+                    if (gamepad1.x) {
                         //run red boardside right
                         //pause in the middle of the path
-                        initOuttake();
+                        //initOuttake();
+                        drive.setPoseEstimate(redboardsideright.start());
+                        //sleep(1000);
+                        drive.followTrajectorySequence(redboardsideright);
                         //continue path
                         //after path is complete
-                        releaseOuttake();
+                        //releaseOuttake();
                         runCount = runCount + 1;
                         break;
                     } else if (isMiddleObjectDetected) {
@@ -113,16 +134,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                         releaseOuttake();
                         runCount = runCount + 1;
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } //else if (isLeftObjectDetected) {
                         //run red boardside left
                         //pause in the middle of the path
                         initOuttake();
                         //continue path
                         //after path is complete
-                        releaseOuttake();
-                        runCount = runCount + 1;
-                        break;
-                    }
+                        //releaseOuttake();
+                        //runCount = runCount + 1;
+                        //break;
+                    //}
                 } else if (Objects.equals(colorvalue, "blue")) {
                     if (isRightObjectDetected) {
                         //run blue boardside right
@@ -142,16 +163,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                         releaseOuttake();
                         runCount = runCount + 1;
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } //else if (isLeftObjectDetected) {
                         //run blue boardside left
                         //pause in the middle of the path
                         initOuttake();
                         //continue path
                         //after path is complete
-                        releaseOuttake();
-                        runCount = runCount + 1;
-                        break;
-                    }
+                        //releaseOuttake();
+                        //runCount = runCount + 1;
+                        //break;
+                    //}
                 }
             } else if (Objects.equals(side, "audience")) {
                 if (Objects.equals(colorvalue, "red")) {
