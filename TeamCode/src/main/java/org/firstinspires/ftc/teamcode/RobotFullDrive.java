@@ -231,11 +231,11 @@ public class RobotFullDrive extends LinearOpMode {
         rightBackDrive.setPower(rightBackPower);
         if (gamepad2.dpad_down) {
             top.setPosition(0);
-            bottom.setPosition(0);
+            bottom.setPosition(0.03);
             telemetry.addData("Top Servo Position:", top.getPosition());
         }
         if (gamepad2.dpad_up) {
-            bottom.setPosition(0.08);
+            bottom.setPosition(0.23);
             sleep(550);
             top.setPosition(0.23);
             bottom.setPosition(0.4);
@@ -256,7 +256,7 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("door Servo Position:", top.getPosition());
         }
         if (gamepad2.x) {
-            bottom.setPosition(0.08);
+            bottom.setPosition(0.23);
             telemetry.addData("door Position:", top.getPosition());
 
         }
@@ -265,17 +265,13 @@ public class RobotFullDrive extends LinearOpMode {
             telemetry.addData("door Position:", top.getPosition());
 
         }
-        telemetry.update();
-
-        if (gamepad1.x) {
-
-            if (gamepad1.dpad_up) {
-                dronelauncher.setPosition(0.9);
-            }
-            if (gamepad1.dpad_down) {
-                dronelauncher.setPosition(0.5);
-            }
+        if (gamepad1.dpad_up) {
+            dronelauncher.setPosition(0.9);
         }
+        if (gamepad1.dpad_down) {
+            dronelauncher.setPosition(0.5);
+        }
+
         if (gamepad2.b) {
             if (gamepad2.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
