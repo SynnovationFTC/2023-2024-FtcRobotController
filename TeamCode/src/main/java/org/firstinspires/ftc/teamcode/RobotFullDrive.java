@@ -83,7 +83,6 @@ public class RobotFullDrive extends LinearOpMode {
     private DcMotor rightFrontDrive = null;  //  Used to control the right front drive wheel
     private DcMotor leftBackDrive = null;  //  Used to control the left back drive wheel
     private DcMotor rightBackDrive = null;  //  Used to control the right back drive wheel
-    private DcMotor geckomotor = null;
     private DcMotor bootmotor = null;
 
     @Override
@@ -197,16 +196,8 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor leftlinearactuator = hardwareMap.get(DcMotor.class, "leftlinearactuator");
         DcMotor rightlinearactuator = hardwareMap.get(DcMotor.class, "rightlinearactuator");
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
-        DcMotor geckowheel = hardwareMap.get(DcMotor.class, "geckomotor");
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
-        geckomotor = hardwareMap.get(DcMotor.class, "geckomotor");
         bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
-        Servo top = hardwareMap.get(Servo.class, "topservo");
-        top.setDirection(Servo.Direction.REVERSE);
-        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
-        Servo door = hardwareMap.get(Servo.class, "doorservo");
-        door.setDirection(Servo.Direction.REVERSE);
-        top.setDirection(Servo.Direction.REVERSE);
         // Calculate wheel powers.
         double leftFrontPower = x + y - yaw;
         double rightFrontPower = x - y + yaw;
@@ -229,42 +220,6 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        if (gamepad2.dpad_down) {
-            top.setPosition(0);
-            bottom.setPosition(0.03);
-            telemetry.addData("Top Servo Position:", top.getPosition());
-        }
-        if (gamepad2.dpad_up) {
-            bottom.setPosition(0.23);
-            sleep(550);
-            top.setPosition(0.23);
-            bottom.setPosition(0.4);
-            sleep(50);
-            top.setPosition(0.35);
-            bottom.setPosition(0.74);
-            telemetry.addData("Top Servo Position:", top.getPosition());
-
-        }
-        if (gamepad2.dpad_left) {
-            top.setPosition(0.35);
-            bottom.setPosition(0.8);
-            telemetry.addData("Bottom Servo Position:", bottom.getPosition());
-        }
-
-        if (gamepad2.left_bumper) {
-            door.setPosition(0.01);
-            telemetry.addData("door Servo Position:", top.getPosition());
-        }
-        if (gamepad2.x) {
-            bottom.setPosition(0.23);
-            telemetry.addData("door Position:", top.getPosition());
-
-        }
-        if (gamepad2.right_bumper) {
-            door.setPosition(0.27);
-            telemetry.addData("door Position:", top.getPosition());
-
-        }
         if (gamepad1.dpad_up) {
             dronelauncher.setPosition(0.9);
         }
@@ -295,23 +250,17 @@ public class RobotFullDrive extends LinearOpMode {
         }
         if (gamepad2.a) {
             if (gamepad2.right_trigger > 0) {
-                geckowheel.setDirection(DcMotorSimple.Direction.FORWARD);
                 bootwheel.setDirection(DcMotorSimple.Direction.FORWARD);
-                geckowheel.setPower(gamepad2.right_trigger);
                 bootwheel.setPower(gamepad2.right_trigger);
             } else {
                 bootwheel.setPower(0);
-                geckowheel.setPower(0);
             }
             if (gamepad2.left_trigger > 0) {
-                geckowheel.setDirection(DcMotorSimple.Direction.REVERSE);
                 bootwheel.setDirection(DcMotorSimple.Direction.REVERSE);
-                geckowheel.setPower(gamepad2.left_trigger);
                 bootwheel.setPower(gamepad2.left_trigger);
 
             } else {
                 bootwheel.setPower(0);
-                geckowheel.setPower(0);
             }
         }
     }
