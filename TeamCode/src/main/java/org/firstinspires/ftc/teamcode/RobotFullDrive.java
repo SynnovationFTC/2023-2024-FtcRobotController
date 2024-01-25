@@ -195,6 +195,8 @@ public class RobotFullDrive extends LinearOpMode {
     public void moveRobot(double x, double y, double yaw) {
         DcMotor leftlinearactuator = hardwareMap.get(DcMotor.class, "leftlinearactuator");
         DcMotor rightlinearactuator = hardwareMap.get(DcMotor.class, "rightlinearactuator");
+//        leftlinearactuator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        rightlinearactuator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
         Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
