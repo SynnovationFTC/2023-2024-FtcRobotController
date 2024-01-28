@@ -39,6 +39,7 @@ public class TrackWidthTuner extends LinearOpMode {
         // drive encoders for computing the heading
 
         telemetry.addLine("Press play to begin the track width tuner routine");
+        telemetry.addLine("Current Track Width: " + DriveConstants.TRACK_WIDTH);
         telemetry.addLine("Make sure your robot has enough clearance to turn smoothly");
         telemetry.update();
 
