@@ -17,33 +17,6 @@ import java.util.Objects;
 @Autonomous
 public class RobotFullAutonomous extends LinearOpMode {
 
-    /*void initOuttake() {
-        Servo top = hardwareMap.get(Servo.class, "topservo");
-        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
-        Servo door = hardwareMap.get(Servo.class, "doorservo");
-        door.setDirection(Servo.Direction.REVERSE);
-        top.setDirection(Servo.Direction.REVERSE);
-        door.setPosition(0.01);
-        bottom.setPosition(0.08);
-        sleep(550);
-        top.setPosition(0.23);
-        bottom.setPosition(0.4);
-        sleep(50);
-        top.setPosition(0.35);
-        bottom.setPosition(0.74);
-    }
-
-
-    void releaseOuttake() {
-        Servo top = hardwareMap.get(Servo.class, "topservo");
-        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
-        Servo door = hardwareMap.get(Servo.class, "doorservo");
-        door.setDirection(Servo.Direction.REVERSE);
-        top.setDirection(Servo.Direction.REVERSE);
-        door.setPosition(0.27);
-    }
-     */
-
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
@@ -61,12 +34,6 @@ public class RobotFullAutonomous extends LinearOpMode {
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
         //middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
-        Servo top = hardwareMap.get(Servo.class, "topservo");
-        Servo bottom = hardwareMap.get(Servo.class, "bottomservo");
-        Servo door = hardwareMap.get(Servo.class, "doorservo");
-        door.setDirection(Servo.Direction.REVERSE);
-        top.setDirection(Servo.Direction.REVERSE);
-
         String side = null;
         String colorvalue = null;
         if (color.getState()) {
