@@ -121,8 +121,6 @@ public class RobotFullDrive extends LinearOpMode {
         // Wait for driver to press start
         telemetry.addData(">", "Touch Play to start OpMode");
         telemetry.update();
-        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
-        dronelauncher.setPosition(0.5);
         waitForStart();
 
         while (opModeIsActive()) {
@@ -195,10 +193,7 @@ public class RobotFullDrive extends LinearOpMode {
     public void moveRobot(double x, double y, double yaw) {
         DcMotor leftlinearactuator = hardwareMap.get(DcMotor.class, "leftlinearactuator");
         DcMotor rightlinearactuator = hardwareMap.get(DcMotor.class, "rightlinearactuator");
-//        leftlinearactuator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        rightlinearactuator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
-        Servo dronelauncher = hardwareMap.get(Servo.class, "dronelaunchservo");
         bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
         // Calculate wheel powers.
         double leftFrontPower = x + y - yaw;
@@ -222,12 +217,6 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        if (gamepad1.dpad_up) {
-            dronelauncher.setPosition(0.9);
-        }
-        if (gamepad1.dpad_down) {
-            dronelauncher.setPosition(0.5);
-        }
 
         if (gamepad2.b) {
             if (gamepad2.right_trigger > 0) {
