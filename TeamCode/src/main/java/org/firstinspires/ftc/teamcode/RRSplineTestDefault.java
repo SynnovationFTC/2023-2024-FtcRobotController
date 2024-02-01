@@ -33,7 +33,7 @@ public class RRSplineTestDefault extends LinearOpMode {
 
             drive.followTrajectorySequence(untitled0);
 
-            };
+            }
 
 
         /*
