@@ -29,10 +29,10 @@ public class RobotFullAutonomous extends LinearOpMode {
         color.setMode(DigitalChannel.Mode.INPUT);
         boardside.setMode(DigitalChannel.Mode.INPUT);
         DistanceSensor left;
-        //DistanceSensor middle;
+        DistanceSensor middle;
         DistanceSensor right;
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
-        //middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
+        middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
         String side = null;
         String colorvalue = null;
@@ -174,13 +174,13 @@ public class RobotFullAutonomous extends LinearOpMode {
 
         waitForStart();
         double rightDistance = right.getDistance(DistanceUnit.CM);
-        //double middleDistance = middle.getDistance(DistanceUnit.CM);
+        double middleDistance = middle.getDistance(DistanceUnit.CM);
         double leftDistance = left.getDistance(DistanceUnit.CM);
 
         isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
         //isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
         isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
-        isMiddleObjectDetected = (!isRightObjectDetected && !isLeftObjectDetected);
+        isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected)&&((middleDistance >= 36 && middleDistance <= 100)));
 
 
         while (opModeIsActive()) {
