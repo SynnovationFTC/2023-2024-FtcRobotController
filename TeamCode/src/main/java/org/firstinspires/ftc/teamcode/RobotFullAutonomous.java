@@ -20,7 +20,6 @@ public class RobotFullAutonomous extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        double runCount = 0;
         boolean isLeftObjectDetected;
         boolean isMiddleObjectDetected;
         boolean isRightObjectDetected;
