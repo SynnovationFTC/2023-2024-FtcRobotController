@@ -10,7 +10,9 @@ public class PusherArmTest extends LinearOpMode {
         Servo pusherarm = hardwareMap.get(Servo.class, "pusherarm");
         pusherarm.setPosition(0);
         waitForStart();
-        pusherarm.setPosition(gamepad1.right_trigger);
-    }
+        while (opModeIsActive()) {
+            pusherarm.setPosition(gamepad1.right_trigger);
+        }
 
+    }
 }
