@@ -83,7 +83,6 @@ public class RobotFullDrive extends LinearOpMode {
     private DcMotor rightFrontDrive = null;  //  Used to control the right front drive wheel
     private DcMotor leftBackDrive = null;  //  Used to control the left back drive wheel
     private DcMotor rightBackDrive = null;  //  Used to control the right back drive wheel
-    private DcMotor bootmotor = null;
 
     @Override
     public void runOpMode() {
@@ -194,7 +193,8 @@ public class RobotFullDrive extends LinearOpMode {
         DcMotor leftlinearactuator = hardwareMap.get(DcMotor.class, "leftlinearactuator");
         DcMotor rightlinearactuator = hardwareMap.get(DcMotor.class, "rightlinearactuator");
         DcMotor bootwheel = hardwareMap.get(DcMotor.class, "bootmotor");
-        bootmotor = hardwareMap.get(DcMotor.class, "bootmotor");
+        Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
         // Calculate wheel powers.
         double leftFrontPower = x + y - yaw;
         double rightFrontPower = x - y + yaw;
@@ -217,7 +217,8 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-
+        boolean isIntakeRunning;
+        isIntakeRunning = false;
         if (gamepad2.b) {
             if (gamepad2.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -243,16 +244,29 @@ public class RobotFullDrive extends LinearOpMode {
             if (gamepad2.right_trigger > 0) {
                 bootwheel.setDirection(DcMotorSimple.Direction.FORWARD);
                 bootwheel.setPower(gamepad2.right_trigger);
+
             } else {
                 bootwheel.setPower(0);
             }
             if (gamepad2.left_trigger > 0) {
                 bootwheel.setDirection(DcMotorSimple.Direction.REVERSE);
                 bootwheel.setPower(gamepad2.left_trigger);
-
             } else {
                 bootwheel.setPower(0);
             }
         }
+        boolean outtakedown = ((leftFrontPower <= 0 && rightFrontPower <= 0 && leftBackPower <= 0 && rightBackPower <= 0) && (bootwheel.getPower() > 0));
+        if (outtakedown && !gamepad2.dpad_up) {
+            outtake.setPosition(0.15);
+        } else if (!gamepad2.dpad_up) {
+            outtake.setPosition(0.3);
+        }
+        double servoIncrement = 0.0075;
+        if (gamepad2.dpad_up) {
+            double newservoposition = (outtake.getPosition() + servoIncrement);
+            outtake.setPosition(newservoposition);
+            sleep(5);
+        }
+
     }
 }
