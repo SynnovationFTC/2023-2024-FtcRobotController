@@ -13,10 +13,16 @@ public class OuttakeServo extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.dpad_down) {
-                outtake.setPosition(0.07);
+                outtake.setPosition(gamepad1.right_trigger);
             }
             if (gamepad1.dpad_up) {
-                outtake.setPosition(0.899);
+                outtake.setPosition(gamepad1.right_trigger);
+            }
+            if (gamepad1.dpad_left) {
+                outtake.setPosition(0.3);
+            }
+            if (gamepad1.dpad_right){
+                outtake.setPosition(0);
             }
             //outtake.setPosition(gamepad1.right_trigger);
             telemetry.addLine(String.valueOf(outtake.getPosition()));
