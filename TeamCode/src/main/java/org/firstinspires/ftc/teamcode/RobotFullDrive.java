@@ -241,19 +241,18 @@ public class RobotFullDrive extends LinearOpMode {
         Servo holder = hardwareMap.get(Servo.class, "holder");
         Servo launcher = hardwareMap.get(Servo.class, "launcher");
         holder.setDirection(Servo.Direction.REVERSE);
+        launcher.setDirection(Servo.Direction.REVERSE);
 
         if (gamepad1.dpad_down) {
             holder.setPosition(0.04);
-            sleep(250);
+            sleep(400);
             launcher.setPosition(0.7);
         }
         if (gamepad1.dpad_up) {
             holder.setPosition(0.5);
-            sleep(250);
+            sleep(450);
             launcher.setPosition(0);
         }
 
     }
 }
-
-
