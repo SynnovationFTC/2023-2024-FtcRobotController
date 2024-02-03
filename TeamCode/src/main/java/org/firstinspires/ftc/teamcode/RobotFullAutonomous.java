@@ -358,6 +358,8 @@ public class RobotFullAutonomous extends LinearOpMode {
         outtake.setDirection(Servo.Direction.REVERSE);
         outtake.setPosition(0.3);
         pusherarm.setPosition(0);
+        holder.setPosition(0.04);
+        launcher.setPosition(0.7);
         waitForStart();
         double rightDistance = right.getDistance(DistanceUnit.CM);
         //double middleDistance = middle.getDistance(DistanceUnit.CM);
