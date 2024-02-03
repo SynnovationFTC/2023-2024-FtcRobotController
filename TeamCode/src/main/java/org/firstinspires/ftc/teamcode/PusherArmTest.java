@@ -11,7 +11,9 @@ public class PusherArmTest extends LinearOpMode {
         pusherarm.setPosition(0);
         waitForStart();
         while (opModeIsActive()) {
-            pusherarm.setPosition(gamepad1.right_trigger);
+            if (gamepad1.dpad_up) {
+                pusherarm.setPosition(1);
+            }
         }
 
     }

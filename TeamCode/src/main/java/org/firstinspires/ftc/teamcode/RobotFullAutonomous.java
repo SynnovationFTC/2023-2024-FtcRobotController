@@ -33,6 +33,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
         middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
+        Servo pusherarm = hardwareMap.get(Servo.class, "pusherarm");
         String side = null;
         String colorvalue = null;
         if (color.getState()) {
@@ -170,17 +171,19 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .splineToLinearHeading(new Pose2d(44.23, 59.47, Math.toRadians(1.23)), Math.toRadians(1.23))
                 .build();
 
-
+        Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
+        outtake.setPosition(0.3);
+        //pusherarm.setPosition(0);
         waitForStart();
         double rightDistance = right.getDistance(DistanceUnit.CM);
         double middleDistance = middle.getDistance(DistanceUnit.CM);
         double leftDistance = left.getDistance(DistanceUnit.CM);
 
         isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
-        //isMiddleObjectDetected = (middleDistance >= 36 && middleDistance <= 100);
         isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
-        isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected)&&((middleDistance >= 36 && middleDistance <= 100)));
-
+        //isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected)&&((middleDistance >= 36 && middleDistance <= 100)));
+        isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected));
 
         while (opModeIsActive()) {
             telemetry.addData("Right Distance", rightDistance);
