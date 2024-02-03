@@ -18,6 +18,7 @@ import java.util.Objects;
 public class RobotFullAutonomous extends LinearOpMode {
     public void outtakeUp(){
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
         double servoIncrement = 0.0075;
         double currentservoposition = outtake.getPosition();
         while (currentservoposition > 1) {
@@ -30,6 +31,7 @@ public class RobotFullAutonomous extends LinearOpMode {
     }
     public void outtakeDown(){
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
         outtake.setPosition(0.3);
     }
     @Override
