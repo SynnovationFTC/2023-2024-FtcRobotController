@@ -38,6 +38,8 @@ public class RobotFullAutonomous extends LinearOpMode {
         boolean isLeftObjectDetected;
         boolean isMiddleObjectDetected;
         boolean isRightObjectDetected;
+        Servo holder = hardwareMap.get(Servo.class, "holder");
+        Servo launcher = hardwareMap.get(Servo.class, "launcher");
         DigitalChannel color = hardwareMap.get(DigitalChannel.class, "color");
         DigitalChannel boardside = hardwareMap.get(DigitalChannel.class, "boardside");
         color.setMode(DigitalChannel.Mode.INPUT);
