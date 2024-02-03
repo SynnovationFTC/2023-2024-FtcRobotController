@@ -116,7 +116,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         TrajectorySequence redboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(13.94, -62.17, Math.toRadians(90.00)))
                 .lineTo(new Vector2d(23.25, -60.83))
                 .lineTo(new Vector2d(23.25, -35.62))
-                .splineTo(new Vector2d(8.91, -34.57), Math.toRadians(180.00))
+                .splineTo(new Vector2d(9.5, -31.5), Math.toRadians(180.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
