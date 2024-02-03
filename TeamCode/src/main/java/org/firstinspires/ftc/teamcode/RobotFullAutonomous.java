@@ -80,10 +80,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(35.62, -59.77))
                 .lineTo(new Vector2d(36.08, -38.19))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -97,10 +93,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(24.30, -50.57))
                 .lineTo(new Vector2d(37.74, -35.17))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -115,10 +107,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(31.09, -34.42))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -137,10 +125,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(31.70, -54.19))
                 .lineTo(new Vector2d(42.72, -60.68))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -158,10 +142,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(37.43, -12.08))
                 .lineTo(new Vector2d(36.38, -51.62))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -179,10 +159,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(34.11, -13.13))
                 .lineTo(new Vector2d(36.08, -34.26))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -197,10 +173,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(41.66, 33.51))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -214,10 +186,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(24.45, 50.11))
                 .lineTo(new Vector2d(35.62, 40.00))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -232,10 +200,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(23.70, 54.34))
                 .lineTo(new Vector2d(38.79, 40.91))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -254,10 +218,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(35.02, 11.02))
                 .lineTo(new Vector2d(36.08, 43.62))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
 
@@ -276,10 +236,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(35.62, 11.17))
                 .lineTo(new Vector2d(35.77, 49.21))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
+
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -298,10 +255,6 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(32.60, 4.98))
                 .lineTo(new Vector2d(35.32, 32.15))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .addDisplacementMarker(() -> {
-                    outtakeUp();
-                })
-                .waitSeconds(6)
                 .lineTo(new Vector2d(34.06, 52.80))
                 .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
