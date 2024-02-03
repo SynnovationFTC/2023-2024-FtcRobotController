@@ -183,6 +183,13 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
+        telemetry.addData("Motor Powers", "LF: %.2f, RF: %.2f, LB: %.2f, RB: %.2f", leftFrontPower, rightFrontPower, leftBackPower, rightBackPower);
+
+        telemetry.addData("Linear Actuator Positions", "Left: %.2f, Right: %.2f", leftlinearactuator.getPower(), rightlinearactuator.getPower());
+
+        telemetry.addData("Bootwheel Power", "Bootwheel: %.2f", bootwheel.getPower());
+
+        telemetry.update();
         if (gamepad2.b) {
             if (gamepad2.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
