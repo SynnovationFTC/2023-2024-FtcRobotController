@@ -217,8 +217,6 @@ public class RobotFullDrive extends LinearOpMode {
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        boolean isIntakeRunning;
-        isIntakeRunning = false;
         if (gamepad2.b) {
             if (gamepad2.right_trigger > 0) {
                 leftlinearactuator.setDirection(DcMotorSimple.Direction.FORWARD);
