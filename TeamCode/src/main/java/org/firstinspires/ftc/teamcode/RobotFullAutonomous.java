@@ -113,6 +113,8 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
+                //TODO: Path needs to be remade
+                //TODO: The pixel isn't being pushed far enough onto the mark
                 .lineTo(new Vector2d(-48.45, -61.13))
                 .lineTo(new Vector2d(-48.30, -39.25))
                 .splineTo(new Vector2d(-34.66, -34.87), Math.toRadians(0.00))
