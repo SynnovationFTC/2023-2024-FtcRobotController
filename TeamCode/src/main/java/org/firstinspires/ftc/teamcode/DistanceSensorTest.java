@@ -18,13 +18,13 @@ public class DistanceSensorTest extends LinearOpMode {
     public void runOpMode() {
         // Initialization code for distance sensors...
         DistanceSensor left;
-        DistanceSensor middle;
+        //DistanceSensor middle;
         DistanceSensor right;
         left = hardwareMap.get(DistanceSensor.class, "distanceleft");
-        middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
+        //middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
         Rev2mDistanceSensor leftTOF = (Rev2mDistanceSensor) left;
-        Rev2mDistanceSensor middleTOF = (Rev2mDistanceSensor) middle;
+        //Rev2mDistanceSensor middleTOF = (Rev2mDistanceSensor) middle;
         Rev2mDistanceSensor rightTOF = (Rev2mDistanceSensor) right;
 
         waitForStart();
@@ -36,12 +36,12 @@ public class DistanceSensorTest extends LinearOpMode {
             telemetry.addData("deviceName", left.getDeviceName());
             telemetry.addData("left", String.format("%.01f cm", leftdistance));
             isLeftObjectDetected = (leftdistance >= 36 && leftdistance <= 64);
-
+/*
             double middledistance = middle.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", middle.getDeviceName());
             telemetry.addData("middle", String.format("%.01f cm", middledistance));
             isMiddleObjectDetected = (middledistance >= 36 && middledistance <= 100);
-
+*/
 
             double rightdistance = right.getDistance(DistanceUnit.CM);
             telemetry.addData("deviceName", right.getDeviceName());

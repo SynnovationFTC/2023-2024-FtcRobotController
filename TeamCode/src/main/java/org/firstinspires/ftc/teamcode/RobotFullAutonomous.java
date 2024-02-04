@@ -20,8 +20,9 @@ public class RobotFullAutonomous extends LinearOpMode {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
         double servoIncrement = 0.0075;
-        while (true) {
-            double newservoposition = (outtake.getPosition() + servoIncrement);
+        double newservoposition = 0;
+        while (newservoposition < 1) {
+            newservoposition = (outtake.getPosition() + servoIncrement);
             outtake.setPosition(newservoposition);
             sleep(5);
         }
@@ -174,7 +175,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(41.66, 33.51))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
                 .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         TrajectorySequence blueboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -187,7 +188,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(35.62, 40.00))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
                 .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         TrajectorySequence blueboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -201,7 +202,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(38.79, 40.91))
                 .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
                 .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         TrajectorySequence blueaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
@@ -210,16 +211,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
-                .lineTo(new Vector2d(-38.04, 52.98))
-                .lineTo(new Vector2d(-35.17, 28.38))
-                .lineTo(new Vector2d(-34.87, 12.38))
-                .splineTo(new Vector2d(1.21, 3.87), Math.toRadians(0.81))
-                .lineTo(new Vector2d(35.02, 11.02))
-                .lineTo(new Vector2d(36.08, 43.62))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                //.waitSeconds(0.5)
+                //.lineTo(new Vector2d(-38.04, 52.98))
+                //.lineTo(new Vector2d(-35.17, 28.38))
+                //.lineTo(new Vector2d(-34.87, 12.38))
+                //.splineTo(new Vector2d(1.21, 3.87), Math.toRadians(0.81))
+                //.lineTo(new Vector2d(35.02, 11.02))
+                //.lineTo(new Vector2d(36.08, 43.62))
+                //.lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
+                //.lineTo(new Vector2d(34.06, 52.80))
+                //.splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
 
                 .build();
 
@@ -228,17 +229,17 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
-                .lineTo(new Vector2d(-56.91, 58.11))
-                .lineTo(new Vector2d(-52.08, 12.38))
-                .splineTo(new Vector2d(-21.43, 5.72), Math.toRadians(-3.10))
-                .lineTo(new Vector2d(11.77, 11.92))
-                .lineTo(new Vector2d(35.62, 11.17))
-                .lineTo(new Vector2d(35.77, 49.21))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
+                //.waitSeconds(0.5)
+                //.lineTo(new Vector2d(-56.91, 58.11))
+                //.lineTo(new Vector2d(-52.08, 12.38))
+                //.splineTo(new Vector2d(-21.43, 5.72), Math.toRadians(-3.10))
+                //.lineTo(new Vector2d(11.77, 11.92))
+                //.lineTo(new Vector2d(35.62, 11.17))
+                //.lineTo(new Vector2d(35.77, 49.21))
+                //.lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
 
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                //.lineTo(new Vector2d(34.06, 52.80))
+                //.splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         TrajectorySequence blueaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
@@ -249,14 +250,14 @@ public class RobotFullAutonomous extends LinearOpMode {
                     pusherarm.setPosition(1);
                 })
                 .waitSeconds(0.5)
-                .lineTo(new Vector2d(-51.02, 32.60))
-                .lineTo(new Vector2d(-41.66, 5.89))
-                .lineTo(new Vector2d(11.62, 1.98))
-                .lineTo(new Vector2d(32.60, 4.98))
-                .lineTo(new Vector2d(35.32, 32.15))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(48.23, 59.43, Math.toRadians(0.00)), Math.toRadians(0.00))
+                //.lineTo(new Vector2d(-51.02, 32.60))
+                //.lineTo(new Vector2d(-41.66, 5.89))
+                //.lineTo(new Vector2d(11.62, 1.98))
+                //.lineTo(new Vector2d(32.60, 4.98))
+                //.lineTo(new Vector2d(35.32, 32.15))
+                //.lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
+                //.lineTo(new Vector2d(34.06, 52.80))
+                //.splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
