@@ -169,6 +169,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueboardsideright = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 .lineTo(new Vector2d(24.00, 60.23))
                 .lineTo(new Vector2d(23.70, 31.70))
                 .splineTo(new Vector2d(8.45, 33.66), Math.toRadians(178.59))
@@ -183,6 +184,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 .lineTo(new Vector2d(11.92, 32.75))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
@@ -196,6 +198,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 .lineTo(new Vector2d(24.00, 60.83))
                 .lineTo(new Vector2d(23.70, 40.91))
                 .addDisplacementMarker(() -> {
@@ -210,6 +213,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 .lineTo(new Vector2d(-48.15, 59.92))
                 .lineTo(new Vector2d(-47.70, 40.75))
                 .addDisplacementMarker(() -> {
@@ -228,6 +232,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 .lineTo(new Vector2d(-35.92, 33.21))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
@@ -245,6 +250,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
+                //TODO: Change Parking Location
                 // TODO: When it is placing the pixel on the mark, it isn't going far enough
                 .lineTo(new Vector2d(-48.15, 61.13))
                 .lineTo(new Vector2d(-47.85, 33.96))
