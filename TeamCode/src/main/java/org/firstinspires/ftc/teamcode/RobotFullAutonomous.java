@@ -112,60 +112,49 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
-        TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                //TODO: Path needs to be remade
-                //TODO: The pixel isn't being pushed far enough onto the mark
-                //TODO: It is also running over the other team's spike mark
-                .lineTo(new Vector2d(-48.45, -61.13))
-                .lineTo(new Vector2d(-48.30, -39.25))
-                .splineTo(new Vector2d(-34.66, -34.87), Math.toRadians(0.00))
+        TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
+
+                .lineTo(new Vector2d(-48.15, -61.89))
+                .lineTo(new Vector2d(-46.19, -43.62))
+                .splineTo(new Vector2d(-32.91, -36.08), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
-                .lineTo(new Vector2d(-51.17, -12.38))
-                .lineTo(new Vector2d(-19.32, -10.11))
-                .lineTo(new Vector2d(20.08, -30.04))
-                .lineTo(new Vector2d(31.70, -54.19))
-                .lineTo(new Vector2d(42.72, -60.68))
-                .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(35.43, -51.66))
-                .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(-52.08, -9.21))
+                .lineTo(new Vector2d(10.72, -3.17))
+                .lineTo(new Vector2d(38.19, -1.81))
+                .lineTo(new Vector2d(42.87, -35.77))
+                .lineTo(new Vector2d(42.72, -57.36))
+
                 .build();
 
-        TrajectorySequence redaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                .lineTo(new Vector2d(-36.38, -33.21))
+        TrajectorySequence redaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.98, -62.04, Math.toRadians(90.00)))
+                .lineTo(new Vector2d(-36.68, -32.91))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
-                .lineTo(new Vector2d(-57.36, -52.98))
-                .lineTo(new Vector2d(-51.62, -13.13))
-                .splineTo(new Vector2d(-32.60, -11.17), Math.toRadians(8.39))
-                .lineTo(new Vector2d(-19.32, -10.11))
-                .lineTo(new Vector2d(37.43, -12.08))
-                .lineTo(new Vector2d(36.38, -51.62))
-                .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(35.43, -51.66))
-                .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(-56.15, -50.42))
+                .lineTo(new Vector2d(-52.23, -9.06))
+                .splineTo(new Vector2d(-12.68, -6.49), Math.toRadians(1.39))
+                .lineTo(new Vector2d(27.02, -7.25))
+                .lineTo(new Vector2d(36.38, -26.57))
+                .lineTo(new Vector2d(42.87, -35.77))
+                .lineTo(new Vector2d(43.32, -58.87))
                 .build();
 
-        TrajectorySequence redaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                // TODO: Fix the part where it goes through the gate. It strafes, but it is supposed to go at an angle.
-                .lineTo(new Vector2d(-49.06, -62.04))
-                .lineTo(new Vector2d(-47.40, -40.15))
+        TrajectorySequence redaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
+                .lineTo(new Vector2d(-48.15, -61.89))
+                .lineTo(new Vector2d(-47.40, -40.75))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
-                .lineTo(new Vector2d(-38.94, -57.81))
-                .lineTo(new Vector2d(-33.36, -11.47))
-                .lineTo(new Vector2d(3.47, -10.11))
-                .lineTo(new Vector2d(34.11, -13.13))
-                .lineTo(new Vector2d(36.08, -34.26))
-                .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(35.43, -51.66))
-                .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(-37.13, -52.08))
+                .lineTo(new Vector2d(-35.62, -10.87))
+                .splineTo(new Vector2d(10.72, -3.17), Math.toRadians(0.00))
+                .lineTo(new Vector2d(38.19, -1.81))
+                .lineTo(new Vector2d(38.49, -36.08))
+                .lineTo(new Vector2d(44.68, -35.92))
+                .lineTo(new Vector2d(45.28, -54.19))
                 .build();
 
         TrajectorySequence blueboardsideright = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -177,10 +166,10 @@ public class RobotFullAutonomous extends LinearOpMode {
                     pusherarm.setPosition(1);
                 })
                 .waitSeconds(0.5)
-                .lineTo(new Vector2d(41.66, 33.51))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(47.09, 32.75))
+                .lineTo(new Vector2d(45.13, 57.36))
+                .lineTo(new Vector2d(50.72, 58.57))
+
                 .build();
 
         TrajectorySequence blueboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -192,9 +181,10 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(24.45, 50.11))
                 .lineTo(new Vector2d(35.62, 40.00))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(47.09, 32.75))
+                .lineTo(new Vector2d(45.13, 57.36))
+                .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+
                 .build();
 
         TrajectorySequence blueboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -207,9 +197,10 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(23.70, 54.34))
                 .lineTo(new Vector2d(38.79, 40.91))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(47.09, 32.75))
+                .lineTo(new Vector2d(45.13, 57.36))
+                .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+
                 .build();
 
         TrajectorySequence blueaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
@@ -225,10 +216,10 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(-34.87, 12.38))
                 .splineTo(new Vector2d(1.21, 3.87), Math.toRadians(0.81))
                 .lineTo(new Vector2d(35.02, 11.02))
-                .lineTo(new Vector2d(36.08, 43.62))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(42.87, 35.77))
+                .lineTo(new Vector2d(41.81, 58.87))
+
+
                 .build();
 
         TrajectorySequence blueaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
@@ -238,15 +229,15 @@ public class RobotFullAutonomous extends LinearOpMode {
                     pusherarm.setPosition(1);
                 })
                 .waitSeconds(0.5)
-                .lineTo(new Vector2d(-56.91, 58.11))
+                .lineTo(new Vector2d(-56.91, 51.11))
                 .lineTo(new Vector2d(-52.08, 12.38))
                 .splineTo(new Vector2d(-21.43, 5.72), Math.toRadians(-3.10))
                 .lineTo(new Vector2d(11.77, 11.92))
                 .lineTo(new Vector2d(35.62, 11.17))
                 .lineTo(new Vector2d(35.77, 49.21))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(42.87, 35.77))
+                .lineTo(new Vector2d(41.81, 58.87))
+
                 .build();
 
         TrajectorySequence blueaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
@@ -254,7 +245,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 // TODO: When it is placing the pixel on the mark, it isn't going far enough
                 .lineTo(new Vector2d(-48.15, 61.13))
                 .lineTo(new Vector2d(-47.85, 33.96))
-                .splineTo(new Vector2d(-34.65, 34.26), Math.toRadians(-1.19))
+                .splineTo(new Vector2d(-32.15, 35.62), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
@@ -263,10 +254,9 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(-41.66, 5.89))
                 .lineTo(new Vector2d(11.62, 1.98))
                 .lineTo(new Vector2d(32.60, 4.98))
-                .lineTo(new Vector2d(35.32, 32.15))
-                .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                .lineTo(new Vector2d(34.06, 52.80))
-                .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .lineTo(new Vector2d(42.87, 35.77))
+                .lineTo(new Vector2d(41.81, 58.87))
+
                 .build();
 
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
