@@ -31,21 +31,18 @@ public class MeepMeepTestingMiddle {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
-                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                        .lineTo(new Vector2d(-36.38, -33.21))
+                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-36.98, -62.04, Math.toRadians(90.00)))
+                        .lineTo(new Vector2d(-36.68, -32.91))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
-                        .waitSeconds(0.5)
-                        .lineTo(new Vector2d(-57.36, -52.98))
-                        .lineTo(new Vector2d(-51.62, -13.13))
-                        .splineTo(new Vector2d(-32.60, -11.17), Math.toRadians(8.39))
-                        .lineTo(new Vector2d(-19.32, -10.11))
-                        .lineTo(new Vector2d(37.43, -12.08))
-                        .lineTo(new Vector2d(36.38, -51.62))
-                        .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(35.43, -51.66))
-                        .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(-56.15, -50.42))
+                        .lineTo(new Vector2d(-52.23, -9.06))
+                        .splineTo(new Vector2d(-12.68, -6.49), Math.toRadians(1.39))
+                        .lineTo(new Vector2d(27.02, -7.25))
+                        .lineTo(new Vector2d(36.38, -26.57))
+                        .lineTo(new Vector2d(42.87, -35.77))
+                        .lineTo(new Vector2d(43.32, -58.87))
                         .build());
         RoadRunnerBotEntity blueboardside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width

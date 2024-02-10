@@ -8,26 +8,18 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class OuttakeServo extends LinearOpMode {
     @Override
     public void runOpMode() {
-        Servo holder = hardwareMap.get(Servo.class, "holder");
-        Servo launcher = hardwareMap.get(Servo.class, "launcher");
-
-        holder.setDirection(Servo.Direction.REVERSE);
+        Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.dpad_down) {
-                holder.setPosition(0.04);
-            }
             if (gamepad1.dpad_up) {
-                holder.setPosition(0.5);
+                outtake.setPosition(1);
             }
-            if (gamepad1.dpad_right) {
-                launcher.setPosition(0);
-            }
-            if (gamepad1.dpad_left) {
-                launcher.setPosition(0.7);
+            if (gamepad1.dpad_down) {
+                outtake.setPosition(0.32);
             }
             //outtake.setPosition(gamepad1.right_trigger);
-            telemetry.addLine(String.valueOf(holder.getPosition()));
+            telemetry.addLine(String.valueOf(outtake.getPosition()));
             telemetry.update();
         }
 

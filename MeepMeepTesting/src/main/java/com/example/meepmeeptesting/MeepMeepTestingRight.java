@@ -32,22 +32,20 @@ public class MeepMeepTestingRight {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
-                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                        .lineTo(new Vector2d(-48.45, -61.13))
-                        .lineTo(new Vector2d(-48.30, -39.25))
-                        .splineTo(new Vector2d(-34.66, -34.87), Math.toRadians(0.00))
+                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
+                        //TODO: Pixel placement point isn't right
+                        .lineTo(new Vector2d(-48.15, -61.89))
+                        .lineTo(new Vector2d(-46.19, -43.62))
+                        .splineTo(new Vector2d(-32.91, -36.08), Math.toRadians(0.00))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
-                        .waitSeconds(0.5)
-                        .lineTo(new Vector2d(-51.17, -12.38))
-                        .lineTo(new Vector2d(-19.32, -10.11))
-                        .lineTo(new Vector2d(20.08, -30.04))
-                        .lineTo(new Vector2d(31.70, -54.19))
-                        .lineTo(new Vector2d(42.72, -60.68))
-                        .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(35.43, -51.66))
-                        .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(-52.08, -9.21))
+                        .lineTo(new Vector2d(10.72, -3.17))
+                        .lineTo(new Vector2d(40.00, -12.00))
+                        .lineToLinearHeading(new Pose2d(40.00, -35.00, 0))
+                        .lineTo(new Vector2d(40.00, -60.00))
+                        .lineTo(new Vector2d(54.00, -60.00))
                         .build());
         RoadRunnerBotEntity blueboardside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
@@ -61,10 +59,9 @@ public class MeepMeepTestingRight {
                             //pusherarm.setPosition(1);
                         })
                         .waitSeconds(0.5)
-                        .lineTo(new Vector2d(41.66, 33.51))
-                        .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(34.06, 52.80))
-                        .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(47.09, 32.75))
+                        .lineTo(new Vector2d(45.13, 57.36))
+                        .lineTo(new Vector2d(50.72, 58.57))
                         .build());
         RoadRunnerBotEntity blueaudienceside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
@@ -82,10 +79,8 @@ public class MeepMeepTestingRight {
                         .lineTo(new Vector2d(-34.87, 12.38))
                         .splineTo(new Vector2d(1.21, 3.87), Math.toRadians(0.81))
                         .lineTo(new Vector2d(35.02, 11.02))
-                        .lineTo(new Vector2d(36.08, 43.62))
-                        .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(34.06, 52.80))
-                        .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(42.87, 35.77))
+                        .lineTo(new Vector2d(41.81, 58.87))
                         .build());
 
 

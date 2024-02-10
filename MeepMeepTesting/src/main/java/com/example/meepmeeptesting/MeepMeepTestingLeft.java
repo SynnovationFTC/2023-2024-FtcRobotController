@@ -32,27 +32,24 @@ public class MeepMeepTestingLeft {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
-                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-37.71, -61.94, Math.toRadians(90.00)))
-                        .lineTo(new Vector2d(-49.06, -62.04))
-                        .lineTo(new Vector2d(-47.40, -40.15))
-                        .addDisplacementMarker(() -> {
-                            //pusherarm.setPosition(1);
-                        })
-                        .waitSeconds(0.5)
-                        .lineTo(new Vector2d(-38.94, -57.81))
-                        .lineTo(new Vector2d(-33.36, -11.47))
-                        .lineTo(new Vector2d(3.47, -10.11))
-                        .lineTo(new Vector2d(34.11, -13.13))
-                        .lineTo(new Vector2d(36.08, -34.26))
-                        .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(35.43, -51.66))
-                        .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
+                        .lineTo(new Vector2d(-48.15, -61.89))
+                        .lineTo(new Vector2d(-47.40, -40.75))
+                        .lineTo(new Vector2d(-35.43, -52.11))
+                        .lineTo(new Vector2d(-34.06, -24.46))
+                        .splineTo(new Vector2d(-29.49, -11.43), Math.toRadians(-6.29))
+                        .splineTo(new Vector2d(12.34, -11.89), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(40.00, -12.00))
+                        .lineTo(new Vector2d(40.00, -35.00))
+                        .lineTo(new Vector2d(40.00, -60.00))
+                        .lineTo(new Vector2d(54.00, -60.00))
                         .build());
         RoadRunnerBotEntity blueboardside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
+                        //TODO: Change Parking Location
                         .lineTo(new Vector2d(24.00, 60.83))
                         .lineTo(new Vector2d(23.70, 40.91))
                         .addDisplacementMarker(() -> {
@@ -61,18 +58,21 @@ public class MeepMeepTestingLeft {
                         .waitSeconds(0.5)
                         .lineTo(new Vector2d(23.70, 54.34))
                         .lineTo(new Vector2d(38.79, 40.91))
-                        .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(34.06, 52.80))
-                        .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(47.09, 32.75))
+                        .lineTo(new Vector2d(45.13, 57.36))
+                        .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+
                         .build());
         RoadRunnerBotEntity blueaudienceside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
+                        //TODO: Change Parking Location
+                        // TODO: When it is placing the pixel on the mark, it isn't going far enough
                         .lineTo(new Vector2d(-48.15, 61.13))
                         .lineTo(new Vector2d(-47.85, 33.96))
-                        .splineTo(new Vector2d(-34.65, 34.26), Math.toRadians(-1.19))
+                        .splineTo(new Vector2d(-32.15, 35.62), Math.toRadians(0.00))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
@@ -81,10 +81,9 @@ public class MeepMeepTestingLeft {
                         .lineTo(new Vector2d(-41.66, 5.89))
                         .lineTo(new Vector2d(11.62, 1.98))
                         .lineTo(new Vector2d(32.60, 4.98))
-                        .lineTo(new Vector2d(35.32, 32.15))
-                        .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(34.06, 52.80))
-                        .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .lineTo(new Vector2d(42.87, 35.77))
+                        .lineTo(new Vector2d(41.81, 58.87))
+
                         .build());
 
 

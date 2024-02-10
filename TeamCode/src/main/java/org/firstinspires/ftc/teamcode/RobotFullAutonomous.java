@@ -101,7 +101,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         TrajectorySequence redboardsideleft = drive.trajectorySequenceBuilder(new Pose2d(13.94, -62.17, Math.toRadians(90.00)))
                 .lineTo(new Vector2d(23.25, -60.83))
                 .lineTo(new Vector2d(23.25, -35.62))
-                .splineTo(new Vector2d(9.5, -31.5), Math.toRadians(180.00))
+                .splineTo(new Vector2d(11.125, -31.5), Math.toRadians(180.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
@@ -113,7 +113,7 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
-
+                //TODO: Pixel placement point isn't right
                 .lineTo(new Vector2d(-48.15, -61.89))
                 .lineTo(new Vector2d(-46.19, -43.62))
                 .splineTo(new Vector2d(-32.91, -36.08), Math.toRadians(0.00))
@@ -122,10 +122,10 @@ public class RobotFullAutonomous extends LinearOpMode {
                 })
                 .lineTo(new Vector2d(-52.08, -9.21))
                 .lineTo(new Vector2d(10.72, -3.17))
-                .lineTo(new Vector2d(38.19, -1.81))
-                .lineTo(new Vector2d(42.87, -35.77))
-                .lineTo(new Vector2d(42.72, -57.36))
-
+                .lineTo(new Vector2d(40.00, -12.00))
+                .lineToLinearHeading(new Pose2d(40.00, -35.00, 0))
+                .lineTo(new Vector2d(40.00, -60.00))
+                .lineTo(new Vector2d(54.00, -60.00))
                 .build();
 
         TrajectorySequence redaudiencemiddle = drive.trajectorySequenceBuilder(new Pose2d(-36.98, -62.04, Math.toRadians(90.00)))
@@ -141,20 +141,20 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(42.87, -35.77))
                 .lineTo(new Vector2d(43.32, -58.87))
                 .build();
-
         TrajectorySequence redaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
                 .lineTo(new Vector2d(-48.15, -61.89))
                 .lineTo(new Vector2d(-47.40, -40.75))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .lineTo(new Vector2d(-37.13, -52.08))
-                .lineTo(new Vector2d(-35.62, -10.87))
-                .splineTo(new Vector2d(10.72, -3.17), Math.toRadians(0.00))
-                .lineTo(new Vector2d(38.19, -1.81))
-                .lineTo(new Vector2d(38.49, -36.08))
-                .lineTo(new Vector2d(44.68, -35.92))
-                .lineTo(new Vector2d(45.28, -54.19))
+                .lineTo(new Vector2d(-35.43, -52.11))
+                .lineTo(new Vector2d(-34.06, -24.46))
+                .splineTo(new Vector2d(-29.49, -11.43), Math.toRadians(-6.29))
+                .splineTo(new Vector2d(12.34, -11.89), Math.toRadians(0.00))
+                .lineTo(new Vector2d(40.00, -12.00))
+                .lineTo(new Vector2d(40.00, -35.00))
+                .lineTo(new Vector2d(40.00, -60.00))
+                .lineTo(new Vector2d(54.00, -60.00))
                 .build();
 
         TrajectorySequence blueboardsideright = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -270,8 +270,8 @@ public class RobotFullAutonomous extends LinearOpMode {
         //double middleDistance = middle.getDistance(DistanceUnit.CM);
         double leftDistance = left.getDistance(DistanceUnit.CM);
 
-        isRightObjectDetected = (rightDistance >= 36 && rightDistance <= 64);
-        isLeftObjectDetected = (leftDistance >= 36 && leftDistance <= 64);
+        isRightObjectDetected = (rightDistance >= 43 && rightDistance <= 59);
+        isLeftObjectDetected = (leftDistance >= 43 && leftDistance <= 59);
         //isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected)&&((middleDistance >= 36 && middleDistance <= 100)));
         isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected));
 
@@ -287,19 +287,19 @@ public class RobotFullAutonomous extends LinearOpMode {
 
             if (Objects.equals(side, "board")) {
                 if (Objects.equals(colorvalue, "red")) {
-                    if (isRightObjectDetected) {
+                    if (isRightObjectDetected || gamepad1.b) {
                         telemetry.addData("Object Detected:", "Right");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsideright.start());
                         drive.followTrajectorySequence(redboardsideright);
                         break;
-                    } else if (isMiddleObjectDetected) {
+                    } else if (isMiddleObjectDetected || gamepad1.y) {
                         telemetry.addData("Object Detected:", "Middle");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsidemiddle.start());
                         drive.followTrajectorySequence(redboardsidemiddle);
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } else if (isLeftObjectDetected || gamepad1.x) {
                         telemetry.addData("Object Detected:", "Left");
                         telemetry.update();
                         drive.setPoseEstimate(redboardsideleft.start());
@@ -310,19 +310,19 @@ public class RobotFullAutonomous extends LinearOpMode {
                     // Add similar telemetry and trajectory execution for the blue case
                     telemetry.addData("Color", "Blue");
                     telemetry.update();
-                    if (isRightObjectDetected) {
+                    if (isRightObjectDetected || gamepad1.b) {
                         telemetry.addData("Object Detected:", "Right");
                         telemetry.update();
                         drive.setPoseEstimate(blueboardsideright.start());
                         drive.followTrajectorySequence(blueboardsideright);
                         break;
-                    } else if (isMiddleObjectDetected) {
+                    } else if (isMiddleObjectDetected || gamepad1.y) {
                         telemetry.addData("Object Detected:", "Middle");
                         telemetry.update();
                         drive.setPoseEstimate(blueboardsidemiddle.start());
                         drive.followTrajectorySequence(blueboardsidemiddle);
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } else if (isLeftObjectDetected || gamepad1.x) {
                         telemetry.addData("Object Detected:", "Left");
                         telemetry.update();
                         drive.setPoseEstimate(blueboardsideleft.start());
@@ -332,19 +332,19 @@ public class RobotFullAutonomous extends LinearOpMode {
                 }
             } else if (Objects.equals(side, "audience")) {
                 if (Objects.equals(colorvalue, "red")) {
-                    if (isRightObjectDetected) {
+                    if (isRightObjectDetected || gamepad1.b) {
                         telemetry.addData("Object Detected:", "Right");
                         telemetry.update();
                         drive.setPoseEstimate(redaudienceright.start());
                         drive.followTrajectorySequence(redaudienceright);
                         break;
-                    } else if (isMiddleObjectDetected) {
+                    } else if (isMiddleObjectDetected || gamepad1.y) {
                         telemetry.addData("Object Detected:", "Middle");
                         telemetry.update();
                         drive.setPoseEstimate(redaudiencemiddle.start());
                         drive.followTrajectorySequence(redaudiencemiddle);
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } else if (isLeftObjectDetected || gamepad1.x) {
                         telemetry.addData("Object Detected:", "Left");
                         telemetry.update();
                         drive.setPoseEstimate(redaudienceleft.start());
@@ -355,19 +355,19 @@ public class RobotFullAutonomous extends LinearOpMode {
                     // Add similar telemetry and trajectory execution for the blue case
                     telemetry.addData("Color", "Blue");
                     telemetry.update();
-                    if (isRightObjectDetected) {
+                    if (isRightObjectDetected || gamepad1.b) {
                         telemetry.addData("Object Detected:", "Right");
                         telemetry.update();
                         drive.setPoseEstimate(blueaudienceright.start());
                         drive.followTrajectorySequence(blueaudienceright);
                         break;
-                    } else if (isMiddleObjectDetected) {
+                    } else if (isMiddleObjectDetected || gamepad1.y) {
                         telemetry.addData("Object Detected:", "Middle");
                         telemetry.update();
                         drive.setPoseEstimate(blueaudiencemiddle.start());
                         drive.followTrajectorySequence(blueaudiencemiddle);
                         break;
-                    } else if (isLeftObjectDetected) {
+                    } else if (isLeftObjectDetected || gamepad1.x) {
                         telemetry.addData("Object Detected:", "Left");
                         telemetry.update();
                         drive.setPoseEstimate(blueaudienceleft.start());
