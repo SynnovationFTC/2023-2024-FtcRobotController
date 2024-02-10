@@ -83,7 +83,7 @@ public class MeepMeepTestingLeft {
                         .lineTo(new Vector2d(32.60, 4.98))
                         .lineTo(new Vector2d(42.87, 35.77))
                         .lineTo(new Vector2d(41.81, 58.87))
-
+                        .lineToLinearHeading(new Pose2d(48.50, 58.00, Math.toRadians(0.00)))
                         .build());
 
 

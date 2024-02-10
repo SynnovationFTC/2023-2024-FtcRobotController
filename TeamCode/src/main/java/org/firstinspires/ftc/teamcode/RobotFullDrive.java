@@ -226,14 +226,23 @@ public class RobotFullDrive extends LinearOpMode {
                 bootwheel.setPower(0);
             }
         }
-        double servoIncrement = 0.0075;
+        double upservoIncrement = 0.0075;
+        double upnewservoposition = 0.0875;
+        double downservoIncrement = 0.01;
+        double downnewservoposition = 0.845;
         if (gamepad2.dpad_up) {
-            double newservoposition = (outtake.getPosition() + servoIncrement);
-            outtake.setPosition(newservoposition);
-            sleep(5);
+            while (upnewservoposition < 0.845) {
+                upnewservoposition = (upnewservoposition + upservoIncrement);
+                outtake.setPosition(upnewservoposition);
+                sleep(50);
+            }
         }
-        else {
-            outtake.setPosition(0.3125);
+        if (gamepad2.dpad_down) {
+            while (downnewservoposition > 0.0875) {
+                downnewservoposition = (downnewservoposition - downservoIncrement);
+                outtake.setPosition(downnewservoposition);
+                sleep(25);
+            }
         }
         Servo holder = hardwareMap.get(Servo.class, "holder");
         Servo launcher = hardwareMap.get(Servo.class, "launcher");

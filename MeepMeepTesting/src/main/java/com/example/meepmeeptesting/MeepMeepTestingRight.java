@@ -10,7 +10,6 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class MeepMeepTestingRight {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(600);
-
         RoadRunnerBotEntity redboardside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
@@ -25,9 +24,14 @@ public class MeepMeepTestingRight {
                         .lineTo(new Vector2d(35.62, -59.77))
                         .lineTo(new Vector2d(36.08, -38.19))
                         .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                        .addDisplacementMarker(() -> {
+                            //outtakeUp()
+                        })
+                        .waitSeconds(9.5)
                         .lineTo(new Vector2d(35.43, -51.66))
                         .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                         .build());
+
         RoadRunnerBotEntity redaudienceside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)

@@ -19,19 +19,26 @@ public class RobotFullAutonomous extends LinearOpMode {
     public void outtakeUp() {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
-        double servoIncrement = 0.0075;
-        double newservoposition = 0.3125;
-        while (newservoposition < 1) {
-            newservoposition = (newservoposition + servoIncrement);
-            outtake.setPosition(newservoposition);
-            sleep(5);
+        double upservoIncrement = 0.0075;
+        double upnewservoposition = 0.3;
+        while (upnewservoposition < 0.845) {
+            upnewservoposition = (upnewservoposition + upservoIncrement);
+            outtake.setPosition(upnewservoposition);
+            sleep(50);
         }
 
     }
-    public void outtakeDown(){
+
+    public void outtakeDown() {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
-        outtake.setPosition(0.3);
+        double downservoIncrement = 0.01;
+        double downnewservoposition = 0.845;
+        while (downnewservoposition > 0.0875) {
+            downnewservoposition = (downnewservoposition - downservoIncrement);
+            outtake.setPosition(downnewservoposition);
+            sleep(25);
+        }
     }
     @Override
     public void runOpMode() throws InterruptedException {
@@ -81,6 +88,13 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .lineTo(new Vector2d(35.62, -59.77))
                 .lineTo(new Vector2d(36.08, -38.19))
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                .waitSeconds(4)
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
