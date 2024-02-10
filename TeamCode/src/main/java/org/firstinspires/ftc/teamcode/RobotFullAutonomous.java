@@ -16,13 +16,13 @@ import java.util.Objects;
 
 @Autonomous
 public class RobotFullAutonomous extends LinearOpMode {
-    public void outtakeUp(){
+    public void outtakeUp() {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
         double servoIncrement = 0.0075;
-        double newservoposition = 0;
+        double newservoposition = 0.3125;
         while (newservoposition < 1) {
-            newservoposition = (outtake.getPosition() + servoIncrement);
+            newservoposition = (newservoposition + servoIncrement);
             outtake.setPosition(newservoposition);
             sleep(5);
         }
