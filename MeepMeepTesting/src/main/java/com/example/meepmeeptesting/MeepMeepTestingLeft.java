@@ -18,13 +18,20 @@ public class MeepMeepTestingLeft {
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(13.94, -62.17, Math.toRadians(90.00)))
                         .lineTo(new Vector2d(23.25, -60.83))
                         .lineTo(new Vector2d(23.25, -35.62))
-                        .splineTo(new Vector2d(9.5, -31.5), Math.toRadians(180.00))
+                        .splineTo(new Vector2d(11.125, -31.5), Math.toRadians(180.00))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
                         .waitSeconds(0.5)
                         .lineTo(new Vector2d(31.09, -34.42))
+                        .addDisplacementMarker(() -> {
+                            //outtakeUp();
+                        })
+                        .waitSeconds(1)
                         .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                        .addDisplacementMarker(() -> {
+                            //outtakeDown();
+                        })
                         .lineTo(new Vector2d(35.43, -51.66))
                         .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                         .build());
@@ -35,6 +42,9 @@ public class MeepMeepTestingLeft {
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
                         .lineTo(new Vector2d(-48.15, -61.89))
                         .lineTo(new Vector2d(-47.40, -40.75))
+                        .addDisplacementMarker(() -> {
+                            //pusherarm.setPosition(1);
+                        })
                         .lineTo(new Vector2d(-35.43, -52.11))
                         .lineTo(new Vector2d(-34.06, -24.46))
                         .splineTo(new Vector2d(-29.49, -11.43), Math.toRadians(-6.29))
@@ -57,10 +67,16 @@ public class MeepMeepTestingLeft {
                         })
                         .waitSeconds(0.5)
                         .lineTo(new Vector2d(23.70, 54.34))
-                        .lineTo(new Vector2d(38.79, 40.91))
-                        .lineTo(new Vector2d(47.09, 32.75))
-                        .lineTo(new Vector2d(45.13, 57.36))
-                        .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .addDisplacementMarker(() -> {
+                            //outtakeUp();
+                        })
+                        .waitSeconds(1)
+
+                        .lineToLinearHeading(new Pose2d(48.35, 35.50, Math.toRadians(360.00)))
+                        .addDisplacementMarker(() -> {
+                            //outtakeDown();
+                        })
+                        .lineToLinearHeading(new Pose2d(45.50, 60.00, Math.toRadians(360.00)))
 
                         .build());
         RoadRunnerBotEntity blueaudienceside = new DefaultBotBuilder(meepMeep)
@@ -69,10 +85,9 @@ public class MeepMeepTestingLeft {
                 .setDimensions(16.25,16)
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
                         //TODO: Change Parking Location
-                        // TODO: When it is placing the pixel on the mark, it isn't going far enough
                         .lineTo(new Vector2d(-48.15, 61.13))
                         .lineTo(new Vector2d(-47.85, 33.96))
-                        .splineTo(new Vector2d(-32.15, 35.62), Math.toRadians(0.00))
+                        .splineToLinearHeading(new Pose2d(-33.25, 30.00, Math.toRadians(360.00)), Math.toRadians(360.00))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
@@ -82,8 +97,6 @@ public class MeepMeepTestingLeft {
                         .lineTo(new Vector2d(11.62, 1.98))
                         .lineTo(new Vector2d(32.60, 4.98))
                         .lineTo(new Vector2d(42.87, 35.77))
-                        .lineTo(new Vector2d(41.81, 58.87))
-                        .lineToLinearHeading(new Pose2d(48.50, 58.00, Math.toRadians(0.00)))
                         .build());
 
 

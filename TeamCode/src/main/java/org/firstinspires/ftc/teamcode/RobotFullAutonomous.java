@@ -20,7 +20,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
         double upservoIncrement = 0.00075;
-        double upnewservoposition = 0.3;
+        double upnewservoposition = 0.27;
         while (upnewservoposition < 0.845) {
             upnewservoposition = (upnewservoposition + upservoIncrement);
             outtake.setPosition(upnewservoposition);
@@ -88,13 +88,13 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
+                .waitSeconds(1)
                 .lineTo(new Vector2d(35.62, -59.77))
                 .lineTo(new Vector2d(36.08, -38.19))
                 .addDisplacementMarker(() -> {
                     outtakeUp();
                 })
-                .waitSeconds(0.5)
+                .waitSeconds(1)
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
                 .addDisplacementMarker(() -> {
                     outtakeDown();
@@ -108,10 +108,17 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
-                .waitSeconds(0.5)
+                .waitSeconds(1)
                 .lineTo(new Vector2d(24.30, -50.57))
                 .lineTo(new Vector2d(37.74, -35.17))
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .waitSeconds(1)
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
@@ -125,23 +132,42 @@ public class RobotFullAutonomous extends LinearOpMode {
                 })
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(31.09, -34.42))
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .waitSeconds(1)
                 .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
                 .lineTo(new Vector2d(35.43, -51.66))
                 .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .build();
 
         TrajectorySequence redaudienceright = drive.trajectorySequenceBuilder(new Pose2d(-36.83, -62.19, Math.toRadians(90.00)))
-                //TODO: Pixel placement point isn't right
                 .lineTo(new Vector2d(-48.15, -61.89))
                 .lineTo(new Vector2d(-46.19, -43.62))
-                .splineTo(new Vector2d(-32.91, -36.08), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(-32.75, -30.00, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
+                .waitSeconds(1)
                 .lineTo(new Vector2d(-52.08, -9.21))
                 .lineTo(new Vector2d(10.72, -3.17))
                 .lineTo(new Vector2d(40.00, -12.00))
                 .lineToLinearHeading(new Pose2d(40.00, -35.00, 0))
+                /*
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .waitSeconds(1)
+                 */
+                .lineToLinearHeading(new Pose2d(48.25, -36.00, Math.toRadians(0.00)))
+                /*
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
+                 */
                 .lineTo(new Vector2d(40.00, -60.00))
                 .lineTo(new Vector2d(54.00, -60.00))
                 .build();
@@ -176,18 +202,26 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .build();
 
         TrajectorySequence blueboardsideright = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
-                //TODO: Change Parking Location
                 .lineTo(new Vector2d(24.00, 60.23))
                 .lineTo(new Vector2d(23.70, 31.70))
-                .splineTo(new Vector2d(8.45, 33.66), Math.toRadians(178.59))
+                .splineTo(new Vector2d(10.5, 33.66), Math.toRadians(180))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
                 .waitSeconds(0.5)
-                .lineTo(new Vector2d(47.09, 32.75))
-                .lineTo(new Vector2d(45.13, 57.36))
-                .lineTo(new Vector2d(50.72, 58.57))
 
+                .lineToLinearHeading(new Pose2d(50.50, 35.50, Math.toRadians(360.00)))
+                /*.addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                */
+                //.waitSeconds(5)
+                .lineToLinearHeading(new Pose2d(45.50, 60.00, Math.toRadians(360.00)))
+/*
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
+  */
                 .build();
 
         TrajectorySequence blueboardsidemiddle = drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
@@ -198,10 +232,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                 })
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(24.45, 50.11))
-                .lineTo(new Vector2d(35.62, 40.00))
-                .lineTo(new Vector2d(47.09, 32.75))
-                .lineTo(new Vector2d(45.13, 57.36))
-                .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .waitSeconds(1)
+
+                .lineToLinearHeading(new Pose2d(48.35, 35.50, Math.toRadians(360.00)))
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
+                .lineToLinearHeading(new Pose2d(45.50, 60.00, Math.toRadians(360.00)))
 
                 .build();
 
@@ -214,10 +254,16 @@ public class RobotFullAutonomous extends LinearOpMode {
                 })
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(23.70, 54.34))
-                .lineTo(new Vector2d(38.79, 40.91))
-                .lineTo(new Vector2d(47.09, 32.75))
-                .lineTo(new Vector2d(45.13, 57.36))
-                .splineToLinearHeading(new Pose2d(50.72, 58.57, Math.toRadians(0.00)), Math.toRadians(0.00))
+                .addDisplacementMarker(() -> {
+                    outtakeUp();
+                })
+                .waitSeconds(1)
+
+                .lineToLinearHeading(new Pose2d(48.35, 35.50, Math.toRadians(360.00)))
+                .addDisplacementMarker(() -> {
+                    outtakeDown();
+                })
+                .lineToLinearHeading(new Pose2d(45.50, 60.00, Math.toRadians(360.00)))
 
                 .build();
 
@@ -260,10 +306,9 @@ public class RobotFullAutonomous extends LinearOpMode {
 
         TrajectorySequence blueaudienceleft = drive.trajectorySequenceBuilder(new Pose2d(-37.94, 60.80, Math.toRadians(-90.00)))
                 //TODO: Change Parking Location
-                // TODO: When it is placing the pixel on the mark, it isn't going far enough
                 .lineTo(new Vector2d(-48.15, 61.13))
                 .lineTo(new Vector2d(-47.85, 33.96))
-                .splineTo(new Vector2d(-32.15, 35.62), Math.toRadians(0.00))
+                .splineToLinearHeading(new Pose2d(-35.50, 30.00, Math.toRadians(0.00)), Math.toRadians(0.00))
                 .addDisplacementMarker(() -> {
                     pusherarm.setPosition(1);
                 })
@@ -277,7 +322,7 @@ public class RobotFullAutonomous extends LinearOpMode {
 
                 .build();
 
-        outtake.setPosition(0.3);
+        outtake.setPosition(0.27);
         pusherarm.setPosition(0);
         holder.setPosition(0.04);
         launcher.setPosition(0.7);

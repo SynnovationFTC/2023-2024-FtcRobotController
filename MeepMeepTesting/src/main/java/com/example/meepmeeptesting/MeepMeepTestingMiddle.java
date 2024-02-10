@@ -20,10 +20,17 @@ public class MeepMeepTestingMiddle {
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
-                        .waitSeconds(0.5)
+                        .waitSeconds(1)
                         .lineTo(new Vector2d(24.30, -50.57))
                         .lineTo(new Vector2d(37.74, -35.17))
+                        .addDisplacementMarker(() -> {
+                            //outtakeUp();
+                        })
+                        .waitSeconds(1)
                         .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
+                        .addDisplacementMarker(() -> {
+                            //outtakeDown();
+                        })
                         .lineTo(new Vector2d(35.43, -51.66))
                         .splineToLinearHeading(new Pose2d(49.14, -58.97, Math.toRadians(0.00)), Math.toRadians(0.00))
                         .build());
@@ -49,16 +56,24 @@ public class MeepMeepTestingMiddle {
                 .setConstraints(48.969740383576614, 48.969740383576614, Math.toRadians(196.3634311566834), Math.toRadians(196.3634311566834), 12.23)
                 .setDimensions(16.25,16)
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(13.49, 62.17, Math.toRadians(-90.00)))
+                        //TODO: Change Parking Location
                         .lineTo(new Vector2d(11.92, 32.75))
                         .addDisplacementMarker(() -> {
                             //pusherarm.setPosition(1);
                         })
                         .waitSeconds(0.5)
                         .lineTo(new Vector2d(24.45, 50.11))
-                        .lineTo(new Vector2d(35.62, 40.00))
-                        .lineToLinearHeading(new Pose2d(48.00, 35.89, Math.toRadians(0.00)))
-                        .lineTo(new Vector2d(34.06, 52.80))
-                        .splineToLinearHeading(new Pose2d(50.00, 12.50, Math.toRadians(0.00)), Math.toRadians(0.00))
+                        .addDisplacementMarker(() -> {
+                            //outtakeUp();
+                        })
+                        .waitSeconds(1)
+
+                        .lineToLinearHeading(new Pose2d(48.35, 35.50, Math.toRadians(360.00)))
+                        .addDisplacementMarker(() -> {
+                            //outtakeDown();
+                        })
+                        .lineToLinearHeading(new Pose2d(45.50, 60.00, Math.toRadians(360.00)))
+
                         .build());
         RoadRunnerBotEntity blueaudienceside = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
