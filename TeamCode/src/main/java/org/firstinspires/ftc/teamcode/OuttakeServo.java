@@ -13,12 +13,12 @@ public class OuttakeServo extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.dpad_up) {
-                double upservoIncrement = 0.0075;
+                double upservoIncrement = 0.00075;
                 double upnewservoposition = 0.0875;
                 while (upnewservoposition < 0.845) {
                     upnewservoposition = (upnewservoposition + upservoIncrement);
                     outtake.setPosition(upnewservoposition);
-                    sleep(50);
+                    //sleep(50);
                 }
             }
             if (gamepad1.dpad_down) {
@@ -27,7 +27,7 @@ public class OuttakeServo extends LinearOpMode {
                 while (downnewservoposition > 0.0875) {
                     downnewservoposition = (downnewservoposition - downservoIncrement);
                     outtake.setPosition(downnewservoposition);
-                    sleep(25);
+                    //sleep(25);
                 }
             }
             if (gamepad1.dpad_right){

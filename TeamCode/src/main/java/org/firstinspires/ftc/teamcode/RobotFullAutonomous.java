@@ -19,12 +19,12 @@ public class RobotFullAutonomous extends LinearOpMode {
     public void outtakeUp() {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
-        double upservoIncrement = 0.0075;
+        double upservoIncrement = 0.00075;
         double upnewservoposition = 0.3;
         while (upnewservoposition < 0.845) {
             upnewservoposition = (upnewservoposition + upservoIncrement);
             outtake.setPosition(upnewservoposition);
-            sleep(50);
+            //sleep(50);
         }
 
     }
@@ -32,12 +32,12 @@ public class RobotFullAutonomous extends LinearOpMode {
     public void outtakeDown() {
         Servo outtake = hardwareMap.get(Servo.class, "outtake");
         outtake.setDirection(Servo.Direction.REVERSE);
-        double downservoIncrement = 0.01;
+        double downservoIncrement = 0.001;
         double downnewservoposition = 0.845;
         while (downnewservoposition > 0.0875) {
             downnewservoposition = (downnewservoposition - downservoIncrement);
             outtake.setPosition(downnewservoposition);
-            sleep(25);
+            //sleep(25);
         }
     }
     @Override
@@ -59,6 +59,8 @@ public class RobotFullAutonomous extends LinearOpMode {
         //middle = hardwareMap.get(DistanceSensor.class, "distancemiddle");
         right = hardwareMap.get(DistanceSensor.class, "distanceright");
         Servo pusherarm = hardwareMap.get(Servo.class, "pusherarm");
+        Servo outtake = hardwareMap.get(Servo.class, "outtake");
+        outtake.setDirection(Servo.Direction.REVERSE);
         String side = null;
         String colorvalue = null;
         if (color.getState()) {
@@ -78,6 +80,8 @@ public class RobotFullAutonomous extends LinearOpMode {
             telemetry.addData("Side", "Audience");
             side = "audience";
         }
+        //TODO: Add outtake to all paths
+        //TODO: Fix blueaudience parking
         TrajectorySequence redboardsideright = drive.trajectorySequenceBuilder(new Pose2d(13.94, -62.17, Math.toRadians(90.00)))
                 .lineTo(new Vector2d(24.00, -62.19))
                 .lineTo(new Vector2d(23.55, -39.70))
@@ -87,11 +91,11 @@ public class RobotFullAutonomous extends LinearOpMode {
                 .waitSeconds(0.5)
                 .lineTo(new Vector2d(35.62, -59.77))
                 .lineTo(new Vector2d(36.08, -38.19))
-                .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
-                .waitSeconds(4)
                 .addDisplacementMarker(() -> {
                     outtakeUp();
                 })
+                .waitSeconds(0.5)
+                .lineToLinearHeading(new Pose2d(48.23, -36.57, Math.toRadians(0.00)))
                 .addDisplacementMarker(() -> {
                     outtakeDown();
                 })
@@ -273,8 +277,6 @@ public class RobotFullAutonomous extends LinearOpMode {
 
                 .build();
 
-        Servo outtake = hardwareMap.get(Servo.class, "outtake");
-        outtake.setDirection(Servo.Direction.REVERSE);
         outtake.setPosition(0.3);
         pusherarm.setPosition(0);
         holder.setPosition(0.04);
@@ -285,7 +287,7 @@ public class RobotFullAutonomous extends LinearOpMode {
         double leftDistance = left.getDistance(DistanceUnit.CM);
 
         isRightObjectDetected = (rightDistance >= 43 && rightDistance <= 59);
-        isLeftObjectDetected = (leftDistance >= 43 && leftDistance <= 59);
+        isLeftObjectDetected = (leftDistance >= 45 && leftDistance <= 59);
         //isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected)&&((middleDistance >= 36 && middleDistance <= 100)));
         isMiddleObjectDetected = ((!isRightObjectDetected && !isLeftObjectDetected));
 
